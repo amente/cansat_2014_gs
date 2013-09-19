@@ -1,0 +1,9 @@
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\bin\Release\ParserSim.exe
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\bin\Release\ParserSim.pdb
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.MainForm.resources
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.Properties.Resources.resources
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.csproj.GenerateResource.Cache
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.exe
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.pdb
+G:\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.exe
+G:\Cansat\ParserSim\ParserSim\obj\x86\Release\ParserSim.pdb

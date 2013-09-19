@@ -1,0 +1,39 @@
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\bin\Debug\ParserSim.exe
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\bin\Debug\ParserSim.pdb
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\ParserSim.Properties.Resources.resources
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\ParserSim.exe
+C:\Users\Cyque\AppData\Local\Temporary Projects\ParserSim\obj\x86\Debug\ParserSim.pdb
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\ParserSim.exe
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\ParserSim.pdb
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\bin\Debug\ParserSim.exe
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\bin\Debug\ParserSim.pdb
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\ParserSim.MainForm.resources
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\ParserSim.Properties.Resources.resources
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Cyque\Programming\CANSAT\ParserSim\ParserSim\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.exe
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.pdb
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\bin\Debug\ParserSim.exe
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\bin\Debug\ParserSim.pdb
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csprojResolveAssemblyReference.cache
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.MainForm.resources
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.Properties.Resources.resources
+C:\Users\DAVID BUI\Dropbox\CanSat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csproj.GenerateResource.Cache
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.exe
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.pdb
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csprojResolveAssemblyReference.cache
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.MainForm.resources
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.Properties.Resources.resources
+Z:\Users\Cyque\Programming\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csproj.GenerateResource.Cache
+G:\Cansat\ParserSim\ParserSim\bin\Debug\ParserSim.exe
+G:\Cansat\ParserSim\ParserSim\bin\Debug\ParserSim.pdb
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csprojResolveAssemblyReference.cache
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.MainForm.resources
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.Properties.Resources.resources
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.csproj.GenerateResource.Cache
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.exe
+G:\Cansat\ParserSim\ParserSim\obj\x86\Debug\ParserSim.pdb
