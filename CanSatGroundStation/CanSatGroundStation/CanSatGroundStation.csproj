@@ -60,11 +60,11 @@
       <DependentUpon>DataTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager.cs" />
-    <Compile Include="ParserSim.cs">
+    <Compile Include="SerialParser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ParserSim.designer.cs">
-      <DependentUpon>ParserSim.cs</DependentUpon>
+    <Compile Include="SerialParser.designer.cs">
+      <DependentUpon>SerialParser.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageReceived.cs" />
     <Compile Include="StationControl.cs">
@@ -94,8 +94,8 @@
     <EmbeddedResource Include="DataTableForm.resx">
       <DependentUpon>DataTableForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ParserSim.resx">
-      <DependentUpon>ParserSim.cs</DependentUpon>
+    <EmbeddedResource Include="SerialParser.resx">
+      <DependentUpon>SerialParser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StationControl.resx">
       <DependentUpon>StationControl.cs</DependentUpon>

@@ -36,7 +36,7 @@ namespace CanSatGroundStation
             dataTableForm.MdiParent = this;
             telemetryForm.MdiParent = this;
             
-            ParserSim sim = new ParserSim(manager);
+            SerialParser sim = new SerialParser(manager);
             sim.Show();
         }
 

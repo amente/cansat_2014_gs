@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace CanSatGroundStation
 {
     // <TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,[<BONUS>]
-    public partial class ParserSim : Form
+    public partial class SerialParser : Form
     {
         object[] list = new object[7];
 
@@ -26,7 +26,7 @@ namespace CanSatGroundStation
         int batV = 5;
         int packetCount = 0;
 
-        public ParserSim(Manager manager)
+        public SerialParser(Manager manager)
         {
             InitializeComponent();
             this.manager = manager;
@@ -80,6 +80,11 @@ namespace CanSatGroundStation
 
             //BONUS
             list[6] = 0;
+
+        }
+
+        private void SerialParser_Load(object sender, EventArgs e)
+        {
 
         }
 

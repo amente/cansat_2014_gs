@@ -1,6 +1,6 @@
 ﻿namespace CanSatGroundStation
 {
-    partial class ParserSim
+    partial class SerialParser
     {
         /// <summary>
         /// Required designer variable.
@@ -48,14 +48,15 @@
             this.myTimer.Interval = 1000;
             this.myTimer.Tick += new System.EventHandler(this.tmrTime_Tick);
             // 
-            // ParserSim
+            // SerialParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.lstValues);
-            this.Name = "ParserSim";
-            this.Text = "Parser Simulator";
+            this.Name = "SerialParser";
+            this.Text = "Serial Parser";
+            this.Load += new System.EventHandler(this.SerialParser_Load);
             this.ResumeLayout(false);
 
         }
