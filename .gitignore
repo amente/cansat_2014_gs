@@ -26,3 +26,6 @@ ipch/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+
+# David's local repo
+DO_NOT_TRACK/

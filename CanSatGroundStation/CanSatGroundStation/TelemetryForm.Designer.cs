@@ -28,27 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpTelemetry = new System.Windows.Forms.GroupBox();
             this.tlpTelemetry = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lstTelemetry = new System.Windows.Forms.ListBox();
-            this.pnlTelemetry = new System.Windows.Forms.Panel();
-            this.btnClearLog = new System.Windows.Forms.Button();
-            this.btnReadLog = new System.Windows.Forms.Button();
-            this.splSentTelemetry = new System.Windows.Forms.SplitContainer();
-            this.txtSendTelem = new System.Windows.Forms.TextBox();
-            this.btnSetTelemTemplate = new System.Windows.Forms.Button();
-            this.btnSendTelem = new System.Windows.Forms.Button();
-            this.lblTelemetryStatus = new System.Windows.Forms.Label();
-            this.btnComConnect = new System.Windows.Forms.Button();
-            this.cmbComPorts = new System.Windows.Forms.ComboBox();
-            this.lblComPorts = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.grpTelemetry.SuspendLayout();
             this.tlpTelemetry.SuspendLayout();
-            this.pnlTelemetry.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splSentTelemetry)).BeginInit();
-            this.splSentTelemetry.Panel1.SuspendLayout();
-            this.splSentTelemetry.Panel2.SuspendLayout();
-            this.splSentTelemetry.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpTelemetry
@@ -57,8 +56,8 @@
             this.grpTelemetry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpTelemetry.Location = new System.Drawing.Point(0, 0);
             this.grpTelemetry.Name = "grpTelemetry";
-            this.grpTelemetry.Size = new System.Drawing.Size(575, 363);
-            this.grpTelemetry.TabIndex = 4;
+            this.grpTelemetry.Size = new System.Drawing.Size(677, 423);
+            this.grpTelemetry.TabIndex = 5;
             this.grpTelemetry.TabStop = false;
             this.grpTelemetry.Text = "Telemetry";
             // 
@@ -66,17 +65,70 @@
             // 
             this.tlpTelemetry.ColumnCount = 1;
             this.tlpTelemetry.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpTelemetry.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tlpTelemetry.Controls.Add(this.lstTelemetry, 0, 1);
-            this.tlpTelemetry.Controls.Add(this.pnlTelemetry, 0, 0);
+            this.tlpTelemetry.Controls.Add(this.panel1, 0, 0);
             this.tlpTelemetry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpTelemetry.Location = new System.Drawing.Point(3, 16);
+            this.tlpTelemetry.Margin = new System.Windows.Forms.Padding(0);
             this.tlpTelemetry.Name = "tlpTelemetry";
-            this.tlpTelemetry.RowCount = 2;
-            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tlpTelemetry.RowCount = 3;
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpTelemetry.Size = new System.Drawing.Size(569, 344);
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpTelemetry.Size = new System.Drawing.Size(671, 404);
             this.tlpTelemetry.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 382);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(671, 22);
+            this.tableLayoutPanel3.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(654, 3);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(14, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(504, 3);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 15);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Bytes Received:";
             // 
             // lstTelemetry
             // 
@@ -86,148 +138,121 @@
             this.lstTelemetry.HorizontalScrollbar = true;
             this.lstTelemetry.Items.AddRange(new object[] {
             "Ground Station Start"});
-            this.lstTelemetry.Location = new System.Drawing.Point(3, 83);
+            this.lstTelemetry.Location = new System.Drawing.Point(3, 34);
             this.lstTelemetry.Name = "lstTelemetry";
-            this.lstTelemetry.Size = new System.Drawing.Size(563, 258);
-            this.lstTelemetry.TabIndex = 1;
+            this.lstTelemetry.Size = new System.Drawing.Size(665, 345);
+            this.lstTelemetry.TabIndex = 13;
             // 
-            // pnlTelemetry
+            // panel1
             // 
-            this.pnlTelemetry.Controls.Add(this.btnClearLog);
-            this.pnlTelemetry.Controls.Add(this.btnReadLog);
-            this.pnlTelemetry.Controls.Add(this.splSentTelemetry);
-            this.pnlTelemetry.Controls.Add(this.lblTelemetryStatus);
-            this.pnlTelemetry.Controls.Add(this.btnComConnect);
-            this.pnlTelemetry.Controls.Add(this.cmbComPorts);
-            this.pnlTelemetry.Controls.Add(this.lblComPorts);
-            this.pnlTelemetry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTelemetry.Location = new System.Drawing.Point(3, 3);
-            this.pnlTelemetry.Name = "pnlTelemetry";
-            this.pnlTelemetry.Size = new System.Drawing.Size(563, 74);
-            this.pnlTelemetry.TabIndex = 2;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(665, 25);
+            this.panel1.TabIndex = 14;
             // 
-            // btnClearLog
+            // button2
             // 
-            this.btnClearLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearLog.Location = new System.Drawing.Point(404, 0);
-            this.btnClearLog.Name = "btnClearLog";
-            this.btnClearLog.Size = new System.Drawing.Size(75, 23);
-            this.btnClearLog.TabIndex = 6;
-            this.btnClearLog.Text = "Clear Log";
-            this.btnClearLog.UseVisualStyleBackColor = true;
-            this.btnClearLog.Click += new System.EventHandler(this.btnClearLog_Click);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(397, 0);
+            this.button2.Name = "button2";
+            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button2.Size = new System.Drawing.Size(88, 25);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Refresh";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnReadLog
+            // label2
             // 
-            this.btnReadLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReadLog.Location = new System.Drawing.Point(485, 0);
-            this.btnReadLog.Name = "btnReadLog";
-            this.btnReadLog.Size = new System.Drawing.Size(75, 23);
-            this.btnReadLog.TabIndex = 5;
-            this.btnReadLog.Text = "Open Log";
-            this.btnReadLog.UseVisualStyleBackColor = true;
-            this.btnReadLog.Click += new System.EventHandler(this.btnReadLog_Click);
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(147, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 16);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Baud:";
             // 
-            // splSentTelemetry
+            // comboBox2
             // 
-            this.splSentTelemetry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splSentTelemetry.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splSentTelemetry.Location = new System.Drawing.Point(0, 51);
-            this.splSentTelemetry.Name = "splSentTelemetry";
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(194, 2);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(76, 21);
+            this.comboBox2.TabIndex = 17;
             // 
-            // splSentTelemetry.Panel1
+            // label1
             // 
-            this.splSentTelemetry.Panel1.Controls.Add(this.txtSendTelem);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Port:";
             // 
-            // splSentTelemetry.Panel2
+            // button1
             // 
-            this.splSentTelemetry.Panel2.Controls.Add(this.btnSetTelemTemplate);
-            this.splSentTelemetry.Panel2.Controls.Add(this.btnSendTelem);
-            this.splSentTelemetry.Size = new System.Drawing.Size(563, 23);
-            this.splSentTelemetry.SplitterDistance = 446;
-            this.splSentTelemetry.TabIndex = 4;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(303, 0);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(88, 25);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Connect";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtSendTelem
+            // comboBox1
             // 
-            this.txtSendTelem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSendTelem.Location = new System.Drawing.Point(3, 1);
-            this.txtSendTelem.Name = "txtSendTelem";
-            this.txtSendTelem.Size = new System.Drawing.Size(443, 20);
-            this.txtSendTelem.TabIndex = 0;
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(41, 1);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(80, 21);
+            this.comboBox1.TabIndex = 15;
             // 
-            // btnSetTelemTemplate
+            // button3
             // 
-            this.btnSetTelemTemplate.Location = new System.Drawing.Point(-1, -1);
-            this.btnSetTelemTemplate.Name = "btnSetTelemTemplate";
-            this.btnSetTelemTemplate.Size = new System.Drawing.Size(21, 23);
-            this.btnSetTelemTemplate.TabIndex = 1;
-            this.btnSetTelemTemplate.UseVisualStyleBackColor = true;
-            // 
-            // btnSendTelem
-            // 
-            this.btnSendTelem.Location = new System.Drawing.Point(23, -1);
-            this.btnSendTelem.Name = "btnSendTelem";
-            this.btnSendTelem.Size = new System.Drawing.Size(93, 23);
-            this.btnSendTelem.TabIndex = 0;
-            this.btnSendTelem.Text = "Send";
-            this.btnSendTelem.UseVisualStyleBackColor = true;
-            // 
-            // lblTelemetryStatus
-            // 
-            this.lblTelemetryStatus.AutoSize = true;
-            this.lblTelemetryStatus.Location = new System.Drawing.Point(3, 27);
-            this.lblTelemetryStatus.Name = "lblTelemetryStatus";
-            this.lblTelemetryStatus.Size = new System.Drawing.Size(112, 13);
-            this.lblTelemetryStatus.TabIndex = 3;
-            this.lblTelemetryStatus.Text = "Telemetry Status: N/A";
-            // 
-            // btnComConnect
-            // 
-            this.btnComConnect.Location = new System.Drawing.Point(200, 0);
-            this.btnComConnect.Name = "btnComConnect";
-            this.btnComConnect.Size = new System.Drawing.Size(75, 23);
-            this.btnComConnect.TabIndex = 2;
-            this.btnComConnect.Text = "Connect";
-            this.btnComConnect.UseVisualStyleBackColor = true;
-            // 
-            // cmbComPorts
-            // 
-            this.cmbComPorts.FormattingEnabled = true;
-            this.cmbComPorts.Location = new System.Drawing.Point(73, 0);
-            this.cmbComPorts.Name = "cmbComPorts";
-            this.cmbComPorts.Size = new System.Drawing.Size(121, 21);
-            this.cmbComPorts.TabIndex = 1;
-            // 
-            // lblComPorts
-            // 
-            this.lblComPorts.AutoSize = true;
-            this.lblComPorts.Location = new System.Drawing.Point(6, 5);
-            this.lblComPorts.Name = "lblComPorts";
-            this.lblComPorts.Size = new System.Drawing.Size(64, 13);
-            this.lblComPorts.TabIndex = 0;
-            this.lblComPorts.Text = "COM Ports: ";
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(491, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 25);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // TelemetryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 363);
+            this.ClientSize = new System.Drawing.Size(677, 423);
             this.Controls.Add(this.grpTelemetry);
             this.MinimumSize = new System.Drawing.Size(466, 200);
             this.Name = "TelemetryForm";
             this.Text = "TemetryForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelemetryForm_FormClosing);
-            this.Load += new System.EventHandler(this.TelemetryForm_Load);
             this.grpTelemetry.ResumeLayout(false);
             this.tlpTelemetry.ResumeLayout(false);
-            this.pnlTelemetry.ResumeLayout(false);
-            this.pnlTelemetry.PerformLayout();
-            this.splSentTelemetry.Panel1.ResumeLayout(false);
-            this.splSentTelemetry.Panel1.PerformLayout();
-            this.splSentTelemetry.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splSentTelemetry)).EndInit();
-            this.splSentTelemetry.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,16 +262,18 @@
         private System.Windows.Forms.GroupBox grpTelemetry;
         private System.Windows.Forms.TableLayoutPanel tlpTelemetry;
         private System.Windows.Forms.ListBox lstTelemetry;
-        private System.Windows.Forms.Panel pnlTelemetry;
-        private System.Windows.Forms.Button btnClearLog;
-        private System.Windows.Forms.Button btnReadLog;
-        private System.Windows.Forms.SplitContainer splSentTelemetry;
-        private System.Windows.Forms.TextBox txtSendTelem;
-        private System.Windows.Forms.Button btnSetTelemTemplate;
-        private System.Windows.Forms.Button btnSendTelem;
-        private System.Windows.Forms.Label lblTelemetryStatus;
-        private System.Windows.Forms.Button btnComConnect;
-        private System.Windows.Forms.ComboBox cmbComPorts;
-        private System.Windows.Forms.Label lblComPorts;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button button3;
+
     }
 }

@@ -35,16 +35,17 @@ namespace CanSatGroundStation
             dataGraphForm.MdiParent = this;
             dataTableForm.MdiParent = this;
             telemetryForm.MdiParent = this;
-            
-            SerialParser sim = new SerialParser(manager);
-            sim.Show();
+
+            telemetryForm.Show();
+            // SerialParser sim = new SerialParser(manager);
+            // sim.Show();
         }
 
         private void messageRecieved(object[] message)
         {
             dataGraphForm.messageRecieved(message);
             dataTableForm.messageRecieved(message);
-            telemetryForm.messageRecieved(message);
+            //telemetryForm.messageRecieved(message);
 
             //rtgTempurature.AddDataPoint(Convert.ToInt32(message[9]));
             //rtgAltitude.AddDataPoint(Convert.ToInt32(message[8]));
