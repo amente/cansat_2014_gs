@@ -34,16 +34,17 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lstTelemetry = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.grpTelemetry.SuspendLayout();
             this.tlpTelemetry.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -66,8 +67,8 @@
             this.tlpTelemetry.ColumnCount = 1;
             this.tlpTelemetry.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpTelemetry.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tlpTelemetry.Controls.Add(this.lstTelemetry, 0, 1);
             this.tlpTelemetry.Controls.Add(this.panel1, 0, 0);
+            this.tlpTelemetry.Controls.Add(this.richTextBox1, 0, 1);
             this.tlpTelemetry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpTelemetry.Location = new System.Drawing.Point(3, 16);
             this.tlpTelemetry.Margin = new System.Windows.Forms.Padding(0);
@@ -98,6 +99,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel3.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label3, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.checkBox1, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 382);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -130,19 +132,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Bytes Received:";
             // 
-            // lstTelemetry
-            // 
-            this.lstTelemetry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lstTelemetry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstTelemetry.FormattingEnabled = true;
-            this.lstTelemetry.HorizontalScrollbar = true;
-            this.lstTelemetry.Items.AddRange(new object[] {
-            "Ground Station Start"});
-            this.lstTelemetry.Location = new System.Drawing.Point(3, 34);
-            this.lstTelemetry.Name = "lstTelemetry";
-            this.lstTelemetry.Size = new System.Drawing.Size(665, 345);
-            this.lstTelemetry.TabIndex = 13;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -159,6 +148,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(665, 25);
             this.panel1.TabIndex = 14;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(491, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 25);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -226,16 +226,27 @@
             this.comboBox1.Size = new System.Drawing.Size(80, 21);
             this.comboBox1.TabIndex = 15;
             // 
-            // button3
+            // richTextBox1
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(491, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 25);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Clear";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.richTextBox1.BackColor = System.Drawing.Color.Honeydew;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 34);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(665, 345);
+            this.richTextBox1.TabIndex = 16;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(79, 16);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Scroll Lock";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // TelemetryForm
             // 
@@ -261,7 +272,6 @@
 
         private System.Windows.Forms.GroupBox grpTelemetry;
         private System.Windows.Forms.TableLayoutPanel tlpTelemetry;
-        private System.Windows.Forms.ListBox lstTelemetry;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
@@ -274,6 +284,8 @@
         private System.Windows.Forms.Label label3;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
 
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Management;
+using System.Threading;
 
 namespace CanSatGroundStation
 {
@@ -15,7 +16,7 @@ namespace CanSatGroundStation
     {
         Manager manager;
         static string[] comPorts;
-        string buffer;
+        byte[] buffer;
 
         public TelemetryForm(Manager manager)
         {
@@ -73,14 +74,26 @@ namespace CanSatGroundStation
             return paddedData;
         }
 
+   
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            this.buffer = this.serialPort1.ReadLine();
-            this.lstTelemetry.Items.Add(buffer);
-            this.lstTelemetry.TabIndex = this.lstTelemetry.Items.Count - 1;
-            this.label4.Text = (int.Parse(this.label4.Text) + this.buffer.Length).ToString();
-
-            manager.commitMessage(packetParser(buffer));
+            if (this.serialPort1.IsOpen)
+            {
+                this.buffer = new byte[this.serialPort1.BytesToRead];
+                int recvBytes = this.serialPort1.Read(buffer, 0, buffer.Length);
+                String data = Encoding.ASCII.GetString(buffer, 0, recvBytes);
+                this.BeginInvoke(new EventHandler(delegate
+                {
+                    this.richTextBox1.AppendText(data);
+                    this.label4.Text = (int.Parse(this.label4.Text) + recvBytes).ToString();
+                }));
+                
+                manager.commitMessage(packetParser(data));
+            }                          
+        }
+        private void closeSerialPort(object state)
+        {
+            this.serialPort1.Close();
         }
 
         private void TelemetryForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -99,32 +112,29 @@ namespace CanSatGroundStation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.button1.Text.Equals("Connect"))
+
+            if (!this.serialPort1.IsOpen)
             {
                 try
                 {
                     this.serialPort1.PortName = this.comboBox1.SelectedItem.ToString();
                     this.serialPort1.BaudRate = int.Parse(this.comboBox2.SelectedItem.ToString());
                     this.serialPort1.Open();
+                    this.button1.Text = "Disconnect";
+                    updateWidgets(false);
                 }
                 catch
                 {
                     MessageBox.Show("Could not open port: " + this.serialPort1.PortName);
-                }
+                    updateWidgets(true);
+                }               
 
-                this.button1.Text = "Disconnect";
-                this.comboBox1.Enabled = false;
-                this.comboBox2.Enabled = false;
-                this.button2.Enabled = false;
-            }
+            }            
             else
             {
-                this.serialPort1.Close();
+                ThreadPool.QueueUserWorkItem(closeSerialPort);
                 this.button1.Text = "Connect";
-                this.comboBox1.Enabled = true;
-                this.comboBox2.Enabled = true;
-                this.button2.Enabled = true;
-                refreshComPorts();
+                updateWidgets(true);
             }
         }
 
@@ -135,7 +145,23 @@ namespace CanSatGroundStation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.lstTelemetry.Items.Clear();
+            this.richTextBox1.Clear();
+        }
+
+        private void updateWidgets(Boolean state)
+        {
+            this.comboBox1.Enabled = state;
+            this.comboBox2.Enabled = state;
+            this.button2.Enabled = state;            
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!checkBox1.Checked)
+            {
+                richTextBox1.SelectionStart = richTextBox1.Text.Length; 
+                richTextBox1.ScrollToCaret(); 
+            }
         }
     }
 }
