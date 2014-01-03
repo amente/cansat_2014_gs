@@ -14,14 +14,14 @@ namespace CanSatGroundStation
 {
     public partial class TelemetryForm : Form
     {
-        Manager manager;
+       
         static string[] comPorts;
         byte[] buffer;
 
-        public TelemetryForm(Manager manager)
+        public TelemetryForm()
         {
             InitializeComponent();
-            this.manager = manager;
+           
 
             refreshComPorts();
             this.comboBox2.Items.AddRange(new string[] { "1200", "2400", "4800", "9600", "19200", "38400", "57600", "115200", "230400" });
@@ -54,7 +54,7 @@ namespace CanSatGroundStation
         {
             if (MessageBox.Show("Are you sure you would like to clear the log?", "Delete Log", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-                manager.ClearLog();
+                //manager.ClearLog();
                 this.label4.Text = "0";
             }
         }
@@ -88,7 +88,7 @@ namespace CanSatGroundStation
                     this.label4.Text = (int.Parse(this.label4.Text) + recvBytes).ToString();
                 }));
                 
-                manager.commitMessage(packetParser(data));
+                //manager.commitMessage(packetParser(data));
             }                          
         }
         private void closeSerialPort(object state)
@@ -107,7 +107,7 @@ namespace CanSatGroundStation
 
         private void btnReadLog_Click(object sender, EventArgs e)
         {
-            manager.OpenLog();
+            //manager.OpenLog();
         }
 
         private void button1_Click(object sender, EventArgs e)

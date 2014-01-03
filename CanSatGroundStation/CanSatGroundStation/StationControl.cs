@@ -6,69 +6,63 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO.Ports;
 
 namespace CanSatGroundStation
 {
     public partial class StationControl : Form
     {
-        MissionTimer timer = new MissionTimer();
-        Manager manager;
-
-        DataGraphForm dataGraphForm;
+       
+        DataGraphForm payloadDataGraph;
+        DataGraphForm containerDataGraph;
         DataTableForm dataTableForm;
         TelemetryForm telemetryForm;
 
         public StationControl()
         {
             InitializeComponent();
+            // Add PacketAvailable to PacketAvailableHandler delegate event in SerialParser
+            // Add DataRecieved to the SerialPortDataRecieveHandler delegate 
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            timer.StartTimer();
-            manager = new Manager(messageRecieved);
+            
 
-            dataGraphForm = new DataGraphForm();
-            dataTableForm = new DataTableForm(manager);
-            telemetryForm = new TelemetryForm(manager);
+            payloadDataGraph = new DataGraphForm();
+            payloadDataGraph.Text = "Payload";
+            containerDataGraph = new DataGraphForm();
+            containerDataGraph.Text = "Container";
+            dataTableForm = new DataTableForm();
+            telemetryForm = new TelemetryForm();
 
-            dataGraphForm.MdiParent = this;
+            payloadDataGraph.MdiParent = this;
+            containerDataGraph.MdiParent = this;
             dataTableForm.MdiParent = this;
             telemetryForm.MdiParent = this;
 
             telemetryForm.Show();
-            // SerialParser sim = new SerialParser(manager);
-            // sim.Show();
+           
         }
 
-        private void messageRecieved(object[] message)
+        private void DataRecieved(Object sender, SerialDataReceivedEventArgs e)
         {
-            dataGraphForm.messageRecieved(message);
-            dataTableForm.messageRecieved(message);
-            //telemetryForm.messageRecieved(message);
-
-            //rtgTempurature.AddDataPoint(Convert.ToInt32(message[9]));
-            //rtgAltitude.AddDataPoint(Convert.ToInt32(message[8]));
-            //rtgBatteryV.AddDataPoint(Convert.ToInt32(message[10]));
-
-            //lstTelemetry.Items.Insert(0, MessageToString(message));
+            // This method is called when the serial port recieves data 
         }
 
-        public static string messageToString(object[] message)
+        private void PacketAvailable(Object sender, EventArgs e)
         {
-            string s = "" + message[0];
-            for (int i = 1; i < message.Length; i++)
-                s += ", " + message[i];
-            return s;
+            // This method is called when a valid telemetry packet is parsed
         }
-        
+
         private void mnuTelemetry_Click(object sender, EventArgs e)
         {
             telemetryForm.Show();
         }
         private void mnuDataGraphs_Click(object sender, EventArgs e)
         {
-            dataGraphForm.Show();
+            payloadDataGraph.Show();
+            containerDataGraph.Show();
         }
         private void mnuDataTable_Click(object sender, EventArgs e)
         {
@@ -83,8 +77,10 @@ namespace CanSatGroundStation
 
         private void btnGraphs_Click(object sender, EventArgs e)
         {
-            dataGraphForm.Show();
-            dataGraphForm.BringToFront();
+            payloadDataGraph.Show();            
+            payloadDataGraph.BringToFront();
+            containerDataGraph.Show();
+            containerDataGraph.BringToFront();
         }
 
         private void btnTable_Click(object sender, EventArgs e)

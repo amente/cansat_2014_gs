@@ -8,26 +8,50 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.IO.Ports;
 
 
 namespace CanSatGroundStation
 {
-    public class Manager
+    public class Logger
     {
-        public string Path = "log.txt";
+        public static string TELEMETRY_LOG_FILE_PATH = "telemetry_log.txt";
+        public static string RAW_LOG_FILE_PATH = "raw_log.txt";
 
-        private MessageReceived messageReceivedDelagate;
-        
-        public Manager(Action<object[]> reciever)
+        private static Logger logger;
+        private Logger(){}
+
+        public static Logger Instance
         {
-            messageReceivedDelagate = new MessageReceived(reciever);
+            get
+            {
+                if (logger == null)
+                {
+                    logger = new Logger();
+                    // Add PacketAvailable to  PackerAvailableHandler delegate
+                    // Add DataRecieved to SerialPortDataRecieveHandler
+                }
+                return logger;
+            }
+        }
+
+        
+
+        private void DataRecieved(Object sender, SerialDataReceivedEventArgs e)
+        {
+            // This method is called when the serial port recieves data 
+        }
+
+        private void PacketAvailable(Object sender, EventArgs e)
+        {
+            // This method is called when a valid telemetry packet is parsed
         }
 
         public void writeToLog(object[] message)
         {
             try
             {
-                using (StreamWriter file = new StreamWriter(Path, true))
+                using (StreamWriter file = new StreamWriter(TELEMETRY_LOG_FILE_PATH, true))
                 {
                     for (int i = 0; i < message.Length; i++)
                     {
@@ -47,7 +71,7 @@ namespace CanSatGroundStation
             List<object[]> listObjectsArrays = new List<object[]>();
             try
             {
-                using (StreamReader file = new StreamReader(Path))
+                using (StreamReader file = new StreamReader(TELEMETRY_LOG_FILE_PATH))
                 {
                     int current = 0;
                     object[] objectArray = new object[7];
@@ -73,16 +97,21 @@ namespace CanSatGroundStation
             return listObjectsArrays;
         }
 
-        public void OpenLog()
+        public void OpenTelemetryLog()
         {
-            Process.Start(Path);
+            Process.Start(TELEMETRY_LOG_FILE_PATH);
+        }
+
+        public void OpenRawLog()
+        {
+            Process.Start(RAW_LOG_FILE_PATH);
         }
 
         public void ClearLog()
         {
             try
             {
-                using (StreamWriter file = new StreamWriter(Path))
+                using (StreamWriter file = new StreamWriter(TELEMETRY_LOG_FILE_PATH))
                 {
 
                 }
@@ -94,11 +123,6 @@ namespace CanSatGroundStation
 
         }
 
-        public void commitMessage(object[] message)
-        {
-            messageReceivedDelagate(message);
-            writeToLog(message);
-        }
     }
 }
 

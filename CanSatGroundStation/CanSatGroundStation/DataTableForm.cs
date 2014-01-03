@@ -12,13 +12,12 @@ namespace CanSatGroundStation
     public partial class DataTableForm : Form
     {
         DataTable table = new DataTable();
-        Manager manager;
+        
 
         //<TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,[<BONUS>]
-        public DataTableForm(Manager manager)
+        public DataTableForm()
         {
-            InitializeComponent();
-            this.manager = manager;
+            InitializeComponent();         
 
             table.Columns.Add("TEAM ID");
             table.Columns.Add("PACKET COUNT");
@@ -38,7 +37,7 @@ namespace CanSatGroundStation
         {
             if (chkAutoLoad.Checked == true)
             {
-                UpdateDataTable(manager.readFromLog());
+               // UpdateDataTable(manager.readFromLog());
             }
         }
 
@@ -63,12 +62,12 @@ namespace CanSatGroundStation
 
         private void btnLoadLogData_Click(object sender, EventArgs e)
         {
-            UpdateDataTable(manager.readFromLog());
+            //UpdateDataTable(manager.readFromLog());
         }
 
         private void DataTableForm_VisibleChanged(object sender, EventArgs e)
         {
-            UpdateDataTable(manager.readFromLog());
+            //UpdateDataTable(manager.readFromLog());
         }
 
 
