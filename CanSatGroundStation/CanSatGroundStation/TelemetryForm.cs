@@ -16,18 +16,14 @@ namespace CanSatGroundStation
     {
        
         static string[] comPorts;
-        byte[] buffer;
+        
 
         public TelemetryForm()
         {
             InitializeComponent();
-           
-
             refreshComPorts();
             this.comboBox2.Items.AddRange(new string[] { "1200", "2400", "4800", "9600", "19200", "38400", "57600", "115200", "230400" });
-            this.comboBox2.SelectedIndex = 3;
-
-            this.serialPort1.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            this.comboBox2.SelectedIndex = 3;            
         }
 
         private void refreshComPorts()
@@ -45,10 +41,6 @@ namespace CanSatGroundStation
             this.comboBox1.SelectedIndex = 0;
         }
 
-        public void messageRecieved(object[] message)
-        {
-            //lstTelemetry.Items.Insert(0, StationControl.messageToString(message));
-        }
 
         private void btnClearLog_Click(object sender, EventArgs e)
         {
@@ -58,44 +50,20 @@ namespace CanSatGroundStation
                 this.label4.Text = "0";
             }
         }
-
-        private string[] packetParser(string rawData)
-        {
-            // <TEAM ID>,<PACKET COUNT>,<MISSION TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,<LUX>
-            
-            string[] paddedData = new string[7];
-            string[] data = rawData.Split(',');
-
-            for (int i = Math.Min(data.Length, 7); i > 0; --i)
-            {
-                paddedData[i] = data[i-1];
-            }
-
-            return paddedData;
-        }
-
+        
    
-        private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
-        {
-            if (this.serialPort1.IsOpen)
-            {
-                this.buffer = new byte[this.serialPort1.BytesToRead];
-                int recvBytes = this.serialPort1.Read(buffer, 0, buffer.Length);
-                String data = Encoding.ASCII.GetString(buffer, 0, recvBytes);
+        public void appendRawData(byte[] buffer)
+        {      
+               
+                String data = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
                 this.BeginInvoke(new EventHandler(delegate
                 {
                     this.richTextBox1.AppendText(data);
-                    this.label4.Text = (int.Parse(this.label4.Text) + recvBytes).ToString();
-                }));
-                
-                //manager.commitMessage(packetParser(data));
-            }                          
+                    this.label4.Text = (int.Parse(this.label4.Text) + buffer.Length).ToString();
+                })); 
+                                                  
         }
-        private void closeSerialPort(object state)
-        {
-            this.serialPort1.Close();
-        }
-
+       
         private void TelemetryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason != CloseReason.MdiFormClosing)
@@ -113,28 +81,26 @@ namespace CanSatGroundStation
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (!this.serialPort1.IsOpen)
+            if (!SerialParser.Instance.serialPortIsOPen())
             {
+                 String PortName = this.comboBox1.SelectedItem.ToString();
+                 int BaudRate = int.Parse(this.comboBox2.SelectedItem.ToString());
                 try
-                {
-                    this.serialPort1.PortName = this.comboBox1.SelectedItem.ToString();
-                    this.serialPort1.BaudRate = int.Parse(this.comboBox2.SelectedItem.ToString());
-                    this.serialPort1.Open();
-                    this.button1.Text = "Disconnect";
-                    updateWidgets(false);
-                }
-                catch
-                {
-                    MessageBox.Show("Could not open port: " + this.serialPort1.PortName);
+                {                   
+                    SerialParser.Instance.openSerialPort(PortName, BaudRate);                  
                     updateWidgets(true);
+                }
+                catch(Exception e1)
+                {
+                    MessageBox.Show("Unable to open port: " + PortName+"\n"+e1.Message);
+                    updateWidgets(false);
                 }               
 
             }            
             else
             {
-                ThreadPool.QueueUserWorkItem(closeSerialPort);
-                this.button1.Text = "Connect";
-                updateWidgets(true);
+                SerialParser.Instance.closeSerialPort();               
+                updateWidgets(false);
             }
         }
 
@@ -148,11 +114,13 @@ namespace CanSatGroundStation
             this.richTextBox1.Clear();
         }
 
+        //Update the widget according to the state of the serial port
         private void updateWidgets(Boolean state)
         {
-            this.comboBox1.Enabled = state;
-            this.comboBox2.Enabled = state;
-            this.button2.Enabled = state;            
+            this.button1.Text = state ? "Disconnet" : "Connect";
+            this.comboBox1.Enabled = !state;
+            this.comboBox2.Enabled = !state;
+            this.button2.Enabled = !state;            
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

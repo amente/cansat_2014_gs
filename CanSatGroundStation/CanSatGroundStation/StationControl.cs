@@ -21,8 +21,8 @@ namespace CanSatGroundStation
         public StationControl()
         {
             InitializeComponent();
-            // Add PacketAvailable to PacketAvailableHandler delegate event in SerialParser
-            // Add DataRecieved to the SerialPortDataRecieveHandler delegate 
+            SerialParser.rawPacketAvailable += RawPacketAvailable;
+            SerialParser.validPacketAvaialbe += ValidPacketAvailable;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -45,12 +45,13 @@ namespace CanSatGroundStation
            
         }
 
-        private void DataRecieved(Object sender, SerialDataReceivedEventArgs e)
+        private void RawPacketAvailable(byte[] buffer)
         {
-            // This method is called when the serial port recieves data 
+            telemetryForm.appendRawData(buffer);
+            Logger.Instance.logRaw(buffer);
         }
-
-        private void PacketAvailable(Object sender, EventArgs e)
+       
+        private void ValidPacketAvailable(TelemetryPacket packet)
         {
             // This method is called when a valid telemetry packet is parsed
         }

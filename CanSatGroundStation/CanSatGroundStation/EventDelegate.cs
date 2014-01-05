@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CanSatGroundStation
 {
-    public delegate void PacketAvailableHandler(TelemeteryPacket packet);
+    public delegate void ValidPacketAvailableHandler(TelemetryPacket packet);
+    public delegate void RawPacketAvailableHandler(byte[] buffer);
 }
     

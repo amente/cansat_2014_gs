@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.grpTelemetry = new System.Windows.Forms.GroupBox();
             this.tlpTelemetry = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -43,8 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.grpTelemetry.SuspendLayout();
             this.tlpTelemetry.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -131,6 +129,16 @@
             this.label3.Size = new System.Drawing.Size(93, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Bytes Received:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(79, 16);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Scroll Lock";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -238,16 +246,6 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(79, 16);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Scroll Lock";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // TelemetryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,7 +280,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.CheckBox checkBox1;
