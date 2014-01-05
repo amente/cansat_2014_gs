@@ -22,7 +22,7 @@ namespace CanSatGroundStation
         {
             InitializeComponent();
             SerialParser.rawPacketAvailable += RawPacketAvailable;
-            SerialParser.validPacketAvaialbe += ValidPacketAvailable;
+            SerialParser.validPacketAvailable += ValidPacketAvailable;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

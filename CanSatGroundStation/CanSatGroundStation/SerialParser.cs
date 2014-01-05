@@ -6,6 +6,10 @@ using System.IO.Ports;
 
 namespace CanSatGroundStation
 {
+    // Delegate methods to be notified for events
+    public delegate void ValidPacketAvailableHandler(TelemetryPacket packet);
+    public delegate void RawPacketAvailableHandler(byte[] buffer);
+
     class SerialParser
     {
         private static volatile SerialParser serialParser;
@@ -65,9 +69,8 @@ namespace CanSatGroundStation
                 if (buffer.Count >= TelemetryPacket.PACKET_SIZE)
                 {
                     parse();
-                }                    
-
-                //manager.commitMessage(packetParser(data));            
+                }                   
+        
         }
 
 

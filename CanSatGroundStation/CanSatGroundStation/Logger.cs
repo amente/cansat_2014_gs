@@ -19,6 +19,10 @@ namespace CanSatGroundStation
         public static string RAW_LOG_FILE_PATH = "raw_log.txt";
 
         private static Logger logger;
+        // Used to indicate first instance of a log operation so as include the data and time per session
+        private bool appendedTimeToRaw = false; 
+        private bool appendedTimeToValid = false; 
+
         private Logger(){}
 
         public static Logger Instance
@@ -36,10 +40,20 @@ namespace CanSatGroundStation
 
         public void logRaw(byte[] buffer)
         {
+            
             // This method is called when the serial port recieves data 
             try
-            {
-                FileStream s = new FileStream(RAW_LOG_FILE_PATH,FileMode.Append);
+            {                
+                if (!appendedTimeToRaw)
+                {
+                    FileStream s1 = new FileStream(RAW_LOG_FILE_PATH, FileMode.Append);
+                    using (StreamWriter sw = new StreamWriter(s1))
+                    {
+                        sw.WriteLine("\n**********" + System.DateTime.Now.ToString()+"**********");                       
+                    }
+                    appendedTimeToRaw = true;
+                }
+                FileStream s = new FileStream(RAW_LOG_FILE_PATH, FileMode.Append);
                 using (BinaryWriter file = new BinaryWriter(s,Encoding.ASCII))
                 {
                     file.Write(buffer);
@@ -56,58 +70,9 @@ namespace CanSatGroundStation
         {
             // This method is called when a valid telemetry packet is parsed
         }
+        
 
-        public void writeToLog(object[] message)
-        {
-            try
-            {
-                using (StreamWriter file = new StreamWriter(VALID_LOG_FILE_PATH, true))
-                {
-                    for (int i = 0; i < message.Length; i++)
-                    {
-                        file.WriteLine(message[i]);
-                    }
-                }
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error writing to file: \n" + e.Message);
-            }
-        }
-
-        public List<object[]> readFromLog()
-        {
-            List<object[]> listObjectsArrays = new List<object[]>();
-            try
-            {
-                using (StreamReader file = new StreamReader(VALID_LOG_FILE_PATH))
-                {
-                    int current = 0;
-                    object[] objectArray = new object[7];
-                    while (!file.EndOfStream)
-                    {
-                        objectArray[current] = file.ReadLine();
-                        current++;
-
-                        if (current >= 7)
-                        {
-                            current = 0;
-                            listObjectsArrays.Add(objectArray);
-                            objectArray = new object[7];
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error reading file: \n" + e.Message);
-            }
-
-            return listObjectsArrays;
-        }
-
-        public void OpenTelemetryLog()
+        public void OpenValidLog()
         {
             Process.Start(VALID_LOG_FILE_PATH);
         }
@@ -115,23 +80,7 @@ namespace CanSatGroundStation
         public void OpenRawLog()
         {
             Process.Start(RAW_LOG_FILE_PATH);
-        }
-
-        public void ClearLog()
-        {
-            try
-            {
-                using (StreamWriter file = new StreamWriter(VALID_LOG_FILE_PATH))
-                {
-
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error clearing file: \n" + e.Message);
-            }
-
-        }
+        }               
 
     }
 }

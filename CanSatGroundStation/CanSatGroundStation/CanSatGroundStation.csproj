@@ -61,7 +61,6 @@
       <DependentUpon>DataTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logger.cs" />
-    <Compile Include="EventDelegate.cs" />
     <Compile Include="StationControl.cs">
       <SubType>Form</SubType>
     </Compile>
