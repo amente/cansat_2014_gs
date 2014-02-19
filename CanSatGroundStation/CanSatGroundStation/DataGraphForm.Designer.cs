@@ -28,219 +28,237 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpData = new System.Windows.Forms.TableLayoutPanel();
-            this.splBatteryV = new System.Windows.Forms.SplitContainer();
-            this.lblBatteryV = new System.Windows.Forms.Label();
-            this.rtgBatteryV = new CanSatGroundStation.RealTimeGraph();
-            this.splTempurature = new System.Windows.Forms.SplitContainer();
-            this.lblTempurature = new System.Windows.Forms.Label();
-            this.rtgTempurature = new CanSatGroundStation.RealTimeGraph();
-            this.splAltitude = new System.Windows.Forms.SplitContainer();
-            this.lblAltitude = new System.Windows.Forms.Label();
-            this.rtgAltitude = new CanSatGroundStation.RealTimeGraph();
-            this.tlpData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splBatteryV)).BeginInit();
-            this.splBatteryV.Panel1.SuspendLayout();
-            this.splBatteryV.Panel2.SuspendLayout();
-            this.splBatteryV.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splTempurature)).BeginInit();
-            this.splTempurature.Panel1.SuspendLayout();
-            this.splTempurature.Panel2.SuspendLayout();
-            this.splTempurature.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splAltitude)).BeginInit();
-            this.splAltitude.Panel1.SuspendLayout();
-            this.splAltitude.Panel2.SuspendLayout();
-            this.splAltitude.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rtgTemp = new CanSatGroundStation.RealTimeGraph();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rtgAlt = new CanSatGroundStation.RealTimeGraph();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rtgBat = new CanSatGroundStation.RealTimeGraph();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rtgLux = new CanSatGroundStation.RealTimeGraph();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tlpData
+            // panel1
             // 
-            this.tlpData.ColumnCount = 1;
-            this.tlpData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpData.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpData.Controls.Add(this.splBatteryV, 0, 2);
-            this.tlpData.Controls.Add(this.splTempurature, 0, 0);
-            this.tlpData.Controls.Add(this.splAltitude, 0, 1);
-            this.tlpData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpData.Location = new System.Drawing.Point(0, 0);
-            this.tlpData.Name = "tlpData";
-            this.tlpData.RowCount = 3;
-            this.tlpData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpData.Size = new System.Drawing.Size(751, 478);
-            this.tlpData.TabIndex = 1;
+            this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(750, 29);
+            this.panel1.TabIndex = 0;
             // 
-            // splBatteryV
+            // label5
             // 
-            this.splBatteryV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.splBatteryV.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splBatteryV.Location = new System.Drawing.Point(3, 321);
-            this.splBatteryV.Name = "splBatteryV";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(527, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Show Chart";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // splBatteryV.Panel1
+            // comboBox1
             // 
-            this.splBatteryV.Panel1.Controls.Add(this.lblBatteryV);
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Payload",
+            "Container",
+            "Both"});
+            this.comboBox1.Location = new System.Drawing.Point(602, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(133, 21);
+            this.comboBox1.TabIndex = 0;
             // 
-            // splBatteryV.Panel2
+            // panel2
             // 
-            this.splBatteryV.Panel2.Controls.Add(this.rtgBatteryV);
-            this.splBatteryV.Size = new System.Drawing.Size(745, 154);
-            this.splBatteryV.SplitterDistance = 217;
-            this.splBatteryV.TabIndex = 18;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.rtgTemp);
+            this.panel2.Location = new System.Drawing.Point(12, 47);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(366, 172);
+            this.panel2.TabIndex = 1;
             // 
-            // lblBatteryV
+            // label1
             // 
-            this.lblBatteryV.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblBatteryV.AutoSize = true;
-            this.lblBatteryV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBatteryV.Location = new System.Drawing.Point(22, 70);
-            this.lblBatteryV.Name = "lblBatteryV";
-            this.lblBatteryV.Size = new System.Drawing.Size(189, 16);
-            this.lblBatteryV.TabIndex = 2;
-            this.lblBatteryV.Text = "Battery Voltage <Voltage>";
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(113, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Temperature (°C)";
             // 
-            // rtgBatteryV
+            // rtgTemp
             // 
-            this.rtgBatteryV.BackColor = System.Drawing.Color.White;
-            this.rtgBatteryV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtgBatteryV.ForeColor = System.Drawing.Color.Black;
-            this.rtgBatteryV.Location = new System.Drawing.Point(0, 0);
-            this.rtgBatteryV.Name = "rtgBatteryV";
-            this.rtgBatteryV.Size = new System.Drawing.Size(524, 154);
-            this.rtgBatteryV.TabIndex = 1;
-            this.rtgBatteryV.YMaximum = 10D;
-            this.rtgBatteryV.YMinimum = 0D;
+            this.rtgTemp.BackColor = System.Drawing.Color.Black;
+            this.rtgTemp.ForeColor = System.Drawing.Color.White;
+            this.rtgTemp.Location = new System.Drawing.Point(12, 27);
+            this.rtgTemp.Name = "rtgTemp";
+            this.rtgTemp.Size = new System.Drawing.Size(336, 142);
+            this.rtgTemp.TabIndex = 0;
+            this.rtgTemp.YMaximum = 100D;
+            this.rtgTemp.YMinimum = 0D;
             // 
-            // splTempurature
+            // panel3
             // 
-            this.splTempurature.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.splTempurature.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splTempurature.Location = new System.Drawing.Point(3, 3);
-            this.splTempurature.Name = "splTempurature";
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.rtgAlt);
+            this.panel3.Location = new System.Drawing.Point(400, 47);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(338, 172);
+            this.panel3.TabIndex = 2;
             // 
-            // splTempurature.Panel1
+            // label2
             // 
-            this.splTempurature.Panel1.Controls.Add(this.lblTempurature);
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(126, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Altitude (m)";
             // 
-            // splTempurature.Panel2
+            // rtgAlt
             // 
-            this.splTempurature.Panel2.Controls.Add(this.rtgTempurature);
-            this.splTempurature.Size = new System.Drawing.Size(745, 153);
-            this.splTempurature.SplitterDistance = 217;
-            this.splTempurature.TabIndex = 16;
+            this.rtgAlt.BackColor = System.Drawing.Color.Black;
+            this.rtgAlt.ForeColor = System.Drawing.Color.White;
+            this.rtgAlt.Location = new System.Drawing.Point(19, 27);
+            this.rtgAlt.Name = "rtgAlt";
+            this.rtgAlt.Size = new System.Drawing.Size(315, 142);
+            this.rtgAlt.TabIndex = 1;
+            this.rtgAlt.YMaximum = 1500D;
+            this.rtgAlt.YMinimum = 400D;
             // 
-            // lblTempurature
+            // panel4
             // 
-            this.lblTempurature.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.lblTempurature.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTempurature.AutoSize = true;
-            this.lblTempurature.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTempurature.Location = new System.Drawing.Point(22, 69);
-            this.lblTempurature.Name = "lblTempurature";
-            this.lblTempurature.Size = new System.Drawing.Size(158, 16);
-            this.lblTempurature.TabIndex = 2;
-            this.lblTempurature.Text = "Tempurature <TEMP>";
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.rtgBat);
+            this.panel4.Location = new System.Drawing.Point(12, 233);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(366, 174);
+            this.panel4.TabIndex = 3;
             // 
-            // rtgTempurature
+            // label3
             // 
-            this.rtgTempurature.BackColor = System.Drawing.Color.White;
-            this.rtgTempurature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtgTempurature.ForeColor = System.Drawing.Color.Black;
-            this.rtgTempurature.Location = new System.Drawing.Point(0, 0);
-            this.rtgTempurature.Name = "rtgTempurature";
-            this.rtgTempurature.Size = new System.Drawing.Size(524, 153);
-            this.rtgTempurature.TabIndex = 1;
-            this.rtgTempurature.YMaximum = 30D;
-            this.rtgTempurature.YMinimum = -30D;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(113, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Batetry Voltage (V)";
             // 
-            // splAltitude
+            // rtgBat
             // 
-            this.splAltitude.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.splAltitude.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splAltitude.Location = new System.Drawing.Point(3, 162);
-            this.splAltitude.Name = "splAltitude";
+            this.rtgBat.BackColor = System.Drawing.Color.Black;
+            this.rtgBat.ForeColor = System.Drawing.Color.White;
+            this.rtgBat.Location = new System.Drawing.Point(12, 29);
+            this.rtgBat.Name = "rtgBat";
+            this.rtgBat.Size = new System.Drawing.Size(336, 142);
+            this.rtgBat.TabIndex = 1;
+            this.rtgBat.YMaximum = 10D;
+            this.rtgBat.YMinimum = 0D;
             // 
-            // splAltitude.Panel1
+            // panel5
             // 
-            this.splAltitude.Panel1.Controls.Add(this.lblAltitude);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.rtgLux);
+            this.panel5.Location = new System.Drawing.Point(400, 233);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(338, 174);
+            this.panel5.TabIndex = 4;
             // 
-            // splAltitude.Panel2
+            // label4
             // 
-            this.splAltitude.Panel2.Controls.Add(this.rtgAltitude);
-            this.splAltitude.Size = new System.Drawing.Size(745, 153);
-            this.splAltitude.SplitterDistance = 217;
-            this.splAltitude.TabIndex = 17;
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(126, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Light Intensity (Lux)";
             // 
-            // lblAltitude
+            // rtgLux
             // 
-            this.lblAltitude.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblAltitude.AutoSize = true;
-            this.lblAltitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltitude.Location = new System.Drawing.Point(22, 69);
-            this.lblAltitude.Name = "lblAltitude";
-            this.lblAltitude.Size = new System.Drawing.Size(175, 16);
-            this.lblAltitude.TabIndex = 2;
-            this.lblAltitude.Text = "Altitude <ALT SENSOR>";
+            this.rtgLux.BackColor = System.Drawing.Color.Black;
+            this.rtgLux.ForeColor = System.Drawing.Color.White;
+            this.rtgLux.Location = new System.Drawing.Point(19, 29);
+            this.rtgLux.Name = "rtgLux";
+            this.rtgLux.Size = new System.Drawing.Size(315, 142);
+            this.rtgLux.TabIndex = 2;
+            this.rtgLux.YMaximum = 150000D;
+            this.rtgLux.YMinimum = 0D;
             // 
-            // rtgAltitude
+            // panel6
             // 
-            this.rtgAltitude.BackColor = System.Drawing.Color.White;
-            this.rtgAltitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtgAltitude.ForeColor = System.Drawing.Color.Black;
-            this.rtgAltitude.Location = new System.Drawing.Point(0, 0);
-            this.rtgAltitude.Name = "rtgAltitude";
-            this.rtgAltitude.Size = new System.Drawing.Size(524, 153);
-            this.rtgAltitude.TabIndex = 1;
-            this.rtgAltitude.YMaximum = 500D;
-            this.rtgAltitude.YMinimum = -100D;
+            this.panel6.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panel6.Location = new System.Drawing.Point(-1, 429);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(750, 13);
+            this.panel6.TabIndex = 5;
             // 
             // DataGraphForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 478);
-            this.Controls.Add(this.tlpData);
+            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.ClientSize = new System.Drawing.Size(747, 441);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "DataGraphForm";
-            this.Text = "DataForm";
+            this.Text = "Telemetry Chart";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataGraphForm_FormClosing);
-            this.tlpData.ResumeLayout(false);
-            this.splBatteryV.Panel1.ResumeLayout(false);
-            this.splBatteryV.Panel1.PerformLayout();
-            this.splBatteryV.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splBatteryV)).EndInit();
-            this.splBatteryV.ResumeLayout(false);
-            this.splTempurature.Panel1.ResumeLayout(false);
-            this.splTempurature.Panel1.PerformLayout();
-            this.splTempurature.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splTempurature)).EndInit();
-            this.splTempurature.ResumeLayout(false);
-            this.splAltitude.Panel1.ResumeLayout(false);
-            this.splAltitude.Panel1.PerformLayout();
-            this.splAltitude.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splAltitude)).EndInit();
-            this.splAltitude.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tlpData;
-        private System.Windows.Forms.SplitContainer splBatteryV;
-        private System.Windows.Forms.Label lblBatteryV;
-        private RealTimeGraph rtgBatteryV;
-        private System.Windows.Forms.SplitContainer splTempurature;
-        private System.Windows.Forms.Label lblTempurature;
-        private RealTimeGraph rtgTempurature;
-        private System.Windows.Forms.SplitContainer splAltitude;
-        private System.Windows.Forms.Label lblAltitude;
-        private RealTimeGraph rtgAltitude;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private RealTimeGraph rtgTemp;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private RealTimeGraph rtgAlt;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label3;
+        private RealTimeGraph rtgBat;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label4;
+        private RealTimeGraph rtgLux;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
+
     }
 }

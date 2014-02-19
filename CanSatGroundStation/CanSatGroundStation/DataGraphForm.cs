@@ -16,11 +16,13 @@ namespace CanSatGroundStation
             InitializeComponent();
         }
 
-        public void messageRecieved(object[] message)
+        public void addPacket(TelemetryPacket packet)
         {
-            rtgTempurature.AddDataPoint(Convert.ToInt32(message[4]));
-            rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));
-            rtgBatteryV.AddDataPoint(Convert.ToInt32(message[5]));
+            rtgTemp.AddDataPoint(packet.temperature);
+            rtgAlt.AddDataPoint(packet.pressure);
+            rtgBat.AddDataPoint(packet.batVoltage);
+            /*rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));
+            rtgBatteryV.AddDataPoint(Convert.ToInt32(message[5]));*/
         }
 
         private void DataGraphForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -30,6 +32,26 @@ namespace CanSatGroundStation
                 this.Hide();
                 e.Cancel = true;
             }
+        }
+
+        private void lblAltitude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splTempurature_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

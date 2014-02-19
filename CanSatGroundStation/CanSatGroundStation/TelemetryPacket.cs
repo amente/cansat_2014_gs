@@ -10,11 +10,11 @@ namespace CanSatGroundStation
     {
         public static int PACKET_SIZE = 16 ; // The packets size in bytes
 
-        double temperature;
-        double pressure;
-        int missionTime; // Mission time in seconds? How do we count this?
-        double batVoltage;
-        double lux;
+        public double temperature;
+        public double pressure;
+        public int missionTime; // Mission time in seconds? How do we count this?
+        public double batVoltage;
+        public double lux;
         
                 
         public TelemetryPacket(Queue<Byte> buffer, int offset)

@@ -86,7 +86,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "DataTableForm";
-            this.Text = "DataTable";
+            this.Text = "Telemetry Table";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataTableForm_FormClosing);
             this.Load += new System.EventHandler(this.DataTableForm_Load);
             this.VisibleChanged += new System.EventHandler(this.DataTableForm_VisibleChanged);

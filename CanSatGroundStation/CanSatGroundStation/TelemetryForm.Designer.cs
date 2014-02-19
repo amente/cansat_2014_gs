@@ -254,8 +254,9 @@
             this.Controls.Add(this.grpTelemetry);
             this.MinimumSize = new System.Drawing.Size(466, 200);
             this.Name = "TelemetryForm";
-            this.Text = "TemetryForm";
+            this.Text = "Command Interface";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TelemetryForm_FormClosing);
+            this.Load += new System.EventHandler(this.TelemetryForm_Load);
             this.grpTelemetry.ResumeLayout(false);
             this.tlpTelemetry.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

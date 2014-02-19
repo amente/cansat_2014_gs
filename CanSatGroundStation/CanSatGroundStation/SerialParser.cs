@@ -69,7 +69,8 @@ namespace CanSatGroundStation
                 if (buffer.Count >= TelemetryPacket.PACKET_SIZE)
                 {
                     parse();
-                }                   
+                } 
+                    
         
         }
 

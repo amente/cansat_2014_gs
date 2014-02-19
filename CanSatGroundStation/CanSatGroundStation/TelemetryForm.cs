@@ -131,5 +131,10 @@ namespace CanSatGroundStation
                 richTextBox1.ScrollToCaret(); 
             }
         }
+
+        private void TelemetryForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

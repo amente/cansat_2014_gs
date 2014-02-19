@@ -30,7 +30,7 @@ namespace CanSatGroundStation
             
 
             payloadDataGraph = new DataGraphForm();
-            payloadDataGraph.Text = "Payload";
+            payloadDataGraph.Text = "Telemetry Chart";
             containerDataGraph = new DataGraphForm();
             containerDataGraph.Text = "Container";
             dataTableForm = new DataTableForm();
