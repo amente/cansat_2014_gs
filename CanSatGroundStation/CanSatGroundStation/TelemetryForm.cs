@@ -52,14 +52,14 @@ namespace CanSatGroundStation
         }
         
    
-        public void appendRawData(byte[] buffer)
+        public void appendRawData(String data)
         {      
-               
-                String data = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+                           
                 this.BeginInvoke(new EventHandler(delegate
                 {
                     this.richTextBox1.AppendText(data);
-                    this.label4.Text = (int.Parse(this.label4.Text) + buffer.Length).ToString();
+                    this.richTextBox1.AppendText("\n");
+                    this.label4.Text = (int.Parse(this.label4.Text) + data.Length).ToString();
                 })); 
                                                   
         }

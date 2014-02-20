@@ -8,7 +8,7 @@ namespace CanSatGroundStation
 {
     // Delegate methods to be notified for events
     public delegate void ValidPacketAvailableHandler(TelemetryPacket packet);
-    public delegate void RawPacketAvailableHandler(byte[] buffer);
+    public delegate void RawPacketAvailableHandler(String data);
 
     class SerialParser
     {
@@ -19,7 +19,7 @@ namespace CanSatGroundStation
         public static event RawPacketAvailableHandler rawPacketAvailable;
         public static event ValidPacketAvailableHandler validPacketAvailable;
 
-        private static Queue<Byte> buffer;
+        private static StringBuilder bigBuffer;
 
         private SerialParser(){}
 
@@ -32,9 +32,9 @@ namespace CanSatGroundStation
                 {
                     if (serialParser == null)
                     {
-                        serialParser = new SerialParser();
-                        buffer = new Queue<Byte>();
+                        serialParser = new SerialParser();                        
                         serialPort = new SerialPort();
+                        bigBuffer = new StringBuilder();
                         serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                     }
                 }
@@ -43,11 +43,11 @@ namespace CanSatGroundStation
         }
 
 
-        private static void OnRawPacketAvaialbe(byte[] b)
+        private static void OnRawPacketAvaialbe(String data)
         {
             if (rawPacketAvailable != null)
             {
-                rawPacketAvailable(b);
+                rawPacketAvailable(data);
             }
         }
 
@@ -57,20 +57,21 @@ namespace CanSatGroundStation
                     return;
                 }
 
-                byte[] smallBuffer = new byte[serialPort.BytesToRead];
+                byte[] smallBuffer = new byte[serialPort.BytesToRead];           
                 int recvBytes = serialPort.Read(smallBuffer, 0, smallBuffer.Length);
-                // notify RawPacket is Avaiable to listeners     
-                OnRawPacketAvaialbe(smallBuffer);
+                  
 
-                foreach(byte b in smallBuffer){
-                    buffer.Enqueue(b);
-                }
-
-                if (buffer.Count >= TelemetryPacket.PACKET_SIZE)
+                bigBuffer.Append(BitConverter.ToString(smallBuffer).Replace("-", string.Empty));
+                 
+                if(bigBuffer.Length == TelemetryPacket.API_PACKET_SIZE)
                 {
-                    parse();
-                } 
-                    
+                       // notify RawPacket is Avaiable to listeners 
+                       String data = bigBuffer.ToString();
+                       bigBuffer.Clear();
+                       OnRawPacketAvaialbe(data);               
+                       parse(data);
+                }
+                              
         
         }
 
@@ -84,13 +85,18 @@ namespace CanSatGroundStation
             }
         }
 
-
-        private static void parse()
+        // notifies listeners when valid packet is parsed from the API frame
+        private static void parse(String data)
         {
-            //TODO
-            // This is a critical method
-            // It extracts valid packets from the buffer queue and clears it
-            // notify listeners when valid packet is parsed
+           String telemetry = data.Substring(TelemetryPacket.API_FRAME_DATA_OFFSET, TelemetryPacket.PACKET_DATA_SIZE);
+           
+           // First data validation, check team id
+           if(!telemetry.Substring(0,4).Equals(TelemetryPacket.TEAM_ID)){
+               //Not a valid team id
+               return;
+           }
+
+           OnValidPacketAvaialbe(new TelemetryPacket(telemetry));
         }
 
 

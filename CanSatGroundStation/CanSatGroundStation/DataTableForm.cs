@@ -14,7 +14,7 @@ namespace CanSatGroundStation
         DataTable table = new DataTable();
         
 
-        //<TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,[<BONUS>]
+        //<TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,[<LUX>]
         public DataTableForm()
         {
             InitializeComponent();         
@@ -24,8 +24,8 @@ namespace CanSatGroundStation
             table.Columns.Add("MISSION_TIME");
             table.Columns.Add("ALT SENSOR");
             table.Columns.Add("TEMPURATURE");
-            table.Columns.Add("VOLTAGE");
-            table.Columns.Add("BONUS");
+            table.Columns.Add("SOURCE VOLTAGE");
+            table.Columns.Add("LUX");
         }
 
         private void DataTableForm_Load(object sender, EventArgs e)
@@ -33,21 +33,11 @@ namespace CanSatGroundStation
             dgvData.DataSource = table;
         }
 
-        public void messageRecieved(object[] message)
+        
+        public void AddData(object[] tableData)
         {
-            if (chkAutoLoad.Checked == true)
-            {
-               // UpdateDataTable(manager.readFromLog());
-            }
-        }
-
-        public void UpdateDataTable(List<object[]> items)
-        {
-            table.Rows.Clear();
-            for (int i = items.Count - 1; i >= 0; i--)
-            {
-                table.Rows.Add(items[i]);
-            }
+            table.Rows.Add(tableData);
+        
         }
 
         private void DataTableForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,19 +47,7 @@ namespace CanSatGroundStation
                 this.Hide();
                 e.Cancel = true;
             }
-        }
-
-
-        private void btnLoadLogData_Click(object sender, EventArgs e)
-        {
-            //UpdateDataTable(manager.readFromLog());
-        }
-
-        private void DataTableForm_VisibleChanged(object sender, EventArgs e)
-        {
-            //UpdateDataTable(manager.readFromLog());
-        }
-
+        }        
 
     }
 }

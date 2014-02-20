@@ -13,8 +13,7 @@ namespace CanSatGroundStation
     public partial class StationControl : Form
     {
        
-        DataGraphForm payloadDataGraph;
-        DataGraphForm containerDataGraph;
+        DataGraphForm dataGraphForm;       
         DataTableForm dataTableForm;
         TelemetryForm telemetryForm;
 
@@ -29,15 +28,13 @@ namespace CanSatGroundStation
         {
             
 
-            payloadDataGraph = new DataGraphForm();
-            payloadDataGraph.Text = "Telemetry Chart";
-            containerDataGraph = new DataGraphForm();
-            containerDataGraph.Text = "Container";
+            dataGraphForm = new DataGraphForm();
+            dataGraphForm.Text = "Telemetry Chart";
+           
             dataTableForm = new DataTableForm();
             telemetryForm = new TelemetryForm();
 
-            payloadDataGraph.MdiParent = this;
-            containerDataGraph.MdiParent = this;
+            dataGraphForm.MdiParent = this;            
             dataTableForm.MdiParent = this;
             telemetryForm.MdiParent = this;
 
@@ -45,15 +42,16 @@ namespace CanSatGroundStation
            
         }
 
-        private void RawPacketAvailable(byte[] buffer)
+        private void RawPacketAvailable(String data)
         {
-            telemetryForm.appendRawData(buffer);
-            Logger.Instance.logRaw(buffer);
+            telemetryForm.appendRawData(data);
+            Logger.Instance.logRaw(data);
         }
        
         private void ValidPacketAvailable(TelemetryPacket packet)
         {
-            // This method is called when a valid telemetry packet is parsed
+            dataTableForm.AddData(packet.toArray());
+            Logger.Instance.logValid(packet);
         }
 
         private void mnuTelemetry_Click(object sender, EventArgs e)
@@ -62,8 +60,7 @@ namespace CanSatGroundStation
         }
         private void mnuDataGraphs_Click(object sender, EventArgs e)
         {
-            payloadDataGraph.Show();
-            containerDataGraph.Show();
+            dataGraphForm.Show();            
         }
         private void mnuDataTable_Click(object sender, EventArgs e)
         {
@@ -78,10 +75,8 @@ namespace CanSatGroundStation
 
         private void btnGraphs_Click(object sender, EventArgs e)
         {
-            payloadDataGraph.Show();            
-            payloadDataGraph.BringToFront();
-            containerDataGraph.Show();
-            containerDataGraph.BringToFront();
+            dataGraphForm.Show();            
+            dataGraphForm.BringToFront();            
         }
 
         private void btnTable_Click(object sender, EventArgs e)

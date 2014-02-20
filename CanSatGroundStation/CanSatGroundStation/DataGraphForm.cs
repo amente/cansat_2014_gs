@@ -19,7 +19,7 @@ namespace CanSatGroundStation
         public void addPacket(TelemetryPacket packet)
         {
             rtgTemp.AddDataPoint(packet.temperature);
-            rtgAlt.AddDataPoint(packet.pressure);
+            rtgAlt.AddDataPoint(packet.altitude);
             rtgBat.AddDataPoint(packet.batVoltage);
             /*rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));
             rtgBatteryV.AddDataPoint(Convert.ToInt32(message[5]));*/
