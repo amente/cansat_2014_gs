@@ -59,19 +59,70 @@ namespace CanSatGroundStation
 
                 byte[] smallBuffer = new byte[serialPort.BytesToRead];           
                 int recvBytes = serialPort.Read(smallBuffer, 0, smallBuffer.Length);
-                  
+                String recivedData = BitConverter.ToString(smallBuffer).Replace("-", string.Empty);
 
-                bigBuffer.Append(BitConverter.ToString(smallBuffer).Replace("-", string.Empty));
-                 
-                if(bigBuffer.Length == TelemetryPacket.API_PACKET_SIZE)
+                Console.WriteLine(recivedData);
+
+                bigBuffer.Append(recivedData);
+             
+                
+                if (bigBuffer.Length > 64)
+                {                  
+                    String snapShot = bigBuffer.ToString();
+                    Console.WriteLine(snapShot);
+                    Console.WriteLine("Length" + bigBuffer.Length);
+                    int start = snapShot.IndexOf("7E");
+                    int end = snapShot.IndexOf("7E", start + 3);
+                    Console.WriteLine("Start" + start + " End" + end);
+                    if ((end - start) > 0)
+                    {
+                        String data = snapShot.Substring(start, (end - start));
+                        OnRawPacketAvaialbe(data);
+                        parse(data);
+                        //bigBuffer.Remove(0, end);
+                        bigBuffer.Clear();
+                        bigBuffer.Append(snapShot.Substring(end));
+                    }
+                }
+
+                /*
+                int delimIdx =  recivedData.IndexOf("7E");
+                if (delimIdx != -1)
                 {
-                       // notify RawPacket is Avaiable to listeners 
-                       String data = bigBuffer.ToString();
-                       bigBuffer.Clear();
+                    String data = bigBuffer.ToString();
+                    OnRawPacketAvaialbe(data);
+                    parse(data);
+                    bigBuffer.Clear();
+                    bigBuffer.Append(recivedData.Substring(delimIdx,(recivedData.Length-(delimIdx+1))));
+
+                }else{
+                    bigBuffer.Append(recivedData);
+                }
+
+                
+                
+                 
+               /*if(bigBuffer.Length >= TelemetryPacket.API_PACKET_SIZE)
+                {
+                       int extraBytes = (bigBuffer.Length - TelemetryPacket.API_PACKET_SIZE);
+                      
+                       // notify RawPacket is Avaiable to listeners                        
+                       String data = bigBuffer.ToString().Substring(0,TelemetryPacket.API_PACKET_SIZE);
+                       if (extraBytes != 0)
+                       {
+                           String extraData = bigBuffer.ToString().Substring(TelemetryPacket.API_PACKET_SIZE, extraBytes);
+                           bigBuffer.Clear();
+                           bigBuffer.Append(extraData);
+                       }
+                       else
+                       {
+                           bigBuffer.Clear();
+                       }
+
                        OnRawPacketAvaialbe(data);               
                        parse(data);
-                }
-                              
+                }   */
+                
         
         }
 
@@ -88,15 +139,24 @@ namespace CanSatGroundStation
         // notifies listeners when valid packet is parsed from the API frame
         private static void parse(String data)
         {
-           String telemetry = data.Substring(TelemetryPacket.API_FRAME_DATA_OFFSET, TelemetryPacket.PACKET_DATA_SIZE);
-           
-           // First data validation, check team id
-           if(!telemetry.Substring(0,4).Equals(TelemetryPacket.TEAM_ID)){
-               //Not a valid team id
-               return;
-           }
 
-           OnValidPacketAvaialbe(new TelemetryPacket(telemetry));
+            int numDataPackets = (data.Length - TelemetryPacket.API_FRAME_DATA_OFFSET)/TelemetryPacket.PACKET_DATA_SIZE;
+
+            for (int i = 0; i < numDataPackets; i++)
+            {                
+                String telemetry = data.Substring(TelemetryPacket.API_FRAME_DATA_OFFSET + i * TelemetryPacket.PACKET_DATA_SIZE, TelemetryPacket.PACKET_DATA_SIZE);
+
+                Console.WriteLine("Telemetry: " + telemetry);
+                // First data validation, check team id
+                if (!telemetry.Substring(0, 4).Equals(TelemetryPacket.TEAM_ID))
+                {
+                    //Not a valid team id
+                    return;
+                }
+
+                OnValidPacketAvaialbe(new TelemetryPacket(telemetry));
+
+            }
         }
 
 

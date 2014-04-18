@@ -81,7 +81,7 @@ namespace CanSatGroundStation
 
             if (dataPoints.Count > this.MaxXRecords)
                 dataPoints.RemoveAt(0);
-            Refresh();
+            //Refresh();
         }
 
         public void SkipDataPoint()

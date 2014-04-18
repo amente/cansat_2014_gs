@@ -21,6 +21,16 @@ namespace CanSatGroundStation
             rtgTemp.AddDataPoint(packet.temperature);
             rtgAlt.AddDataPoint(packet.altitude);
             rtgBat.AddDataPoint(packet.batVoltage);
+            rtgLux.AddDataPoint(packet.lux);
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                rtgTemp.Refresh();
+                rtgAlt.Refresh();
+                rtgBat.Refresh();
+                rtgLux.Refresh();
+            });
+
             /*rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));
             rtgBatteryV.AddDataPoint(Convert.ToInt32(message[5]));*/
         }
@@ -50,6 +60,11 @@ namespace CanSatGroundStation
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click_1(object sender, EventArgs e)
         {
 
         }

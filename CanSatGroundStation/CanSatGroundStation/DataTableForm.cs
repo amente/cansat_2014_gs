@@ -31,13 +31,18 @@ namespace CanSatGroundStation
         private void DataTableForm_Load(object sender, EventArgs e)
         {
             dgvData.DataSource = table;
+            //dgvData.FirstDisplayedScrollingRowIndex = (dgvData.RowCount>0)? dgvData.RowCount-1: 0;
         }
 
         
         public void AddData(object[] tableData)
         {
             table.Rows.Add(tableData);
-        
+            // Invoke an anonymous method on the thread of the form.
+            this.Invoke((MethodInvoker) delegate
+            {
+                dgvData.Refresh();
+            });
         }
 
         private void DataTableForm_FormClosing(object sender, FormClosingEventArgs e)
