@@ -13,11 +13,13 @@ namespace CanSatGroundStation
     public partial class StationControl : Form
     {
        
-        DataGraphForm payloadGraphForm;       
+        PayloadGraphForm payloadGraphForm;       
         DataTableForm payloadTableForm;
-        DataGraphForm containerGraphForm;
+        ContainerGraphForm containerGraphForm;
         DataTableForm containerTableForm;
-        TelemetryForm telemetryForm;
+        CommandForm telemetryForm;
+        ConfigForm configForm;
+        StatusForm statusForm;
 
         public StationControl()
         {
@@ -28,23 +30,26 @@ namespace CanSatGroundStation
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            payloadGraphForm = new DataGraphForm();
+            payloadGraphForm = new PayloadGraphForm();
             payloadGraphForm.Text = "Payload Chart";           
             payloadTableForm = new DataTableForm();
            
             payloadGraphForm.MdiParent = this;            
             payloadTableForm.MdiParent = this;
 
-            containerGraphForm = new DataGraphForm();
+            containerGraphForm = new ContainerGraphForm();
             containerGraphForm.Text = "Container Chart";
             containerTableForm = new DataTableForm();
             containerGraphForm.MdiParent = this;
             containerTableForm.MdiParent = this;
 
-            telemetryForm = new TelemetryForm();
+            telemetryForm = new CommandForm();
             telemetryForm.MdiParent = this;
             telemetryForm.Show();
-           
+
+            configForm = new ConfigForm();
+            statusForm = new StatusForm();
+            statusForm.Show();
         }
 
         private void RawPacketAvailable(String data)
@@ -58,11 +63,13 @@ namespace CanSatGroundStation
             if (packet.isFromPayload()) {
                 payloadTableForm.AddData(packet.toArray());
                 payloadGraphForm.addPacket(packet);
+                statusForm.setPayloadData(packet);                
             }
             else
             {
                 containerTableForm.AddData(packet.toArray());
-                containerGraphForm.addPacket(packet);
+                containerGraphForm.addPacket(packet);                
+                statusForm.setContainerData(packet);
             }
            
             Logger.Instance.logValid(packet);
@@ -104,7 +111,16 @@ namespace CanSatGroundStation
             containerTableForm.Show();
             containerTableForm.BringToFront();
         }
-    
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            configForm.Show();
+        }
+
+        private void btnStatus_Click_1(object sender, EventArgs e)
+        {
+            statusForm.Show();
+        }
     
     }
 }

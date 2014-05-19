@@ -15,13 +15,15 @@ namespace CanSatGroundStation
 {
     public class Logger
     {
-        public static string VALID_LOG_FILE_PATH = "valid_log.txt";
-        public static string RAW_LOG_FILE_PATH = "raw_log.txt";
+        public static string VALID_LOG_FILE_NAME = "cansat_valid_log.txt";
+        public static string RAW_LOG_FILE_NAME = "cansat_raw_log.txt";
 
         private static Logger logger;
         // Used to indicate first instance of a log operation so as include the data and time per session
         private bool appendedTimeToRaw = false; 
-        private bool appendedTimeToValid = false; 
+        private bool appendedTimeToValid = false;
+        private String logDirPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
 
         private Logger(){}
 
@@ -40,7 +42,7 @@ namespace CanSatGroundStation
 
         public void logRaw(String data)
         {
-            FileStream s1 = new FileStream(RAW_LOG_FILE_PATH, FileMode.Append);
+            FileStream s1 = new FileStream(logDirPath+"/"+RAW_LOG_FILE_NAME, FileMode.Append);
             StreamWriter sw = new StreamWriter(s1);
             // This method is called when the serial port recieves data 
             try
@@ -71,7 +73,7 @@ namespace CanSatGroundStation
         {
             // This method is called when a valid telemetry packet is parsed
             // This method is called when the serial port recieves data 
-            FileStream s1 = new FileStream(VALID_LOG_FILE_PATH, FileMode.Append);
+            FileStream s1 = new FileStream(logDirPath + "/" + VALID_LOG_FILE_NAME, FileMode.Append);
             StreamWriter sw = new StreamWriter(s1);
             try
             {
@@ -101,14 +103,22 @@ namespace CanSatGroundStation
 
         public void OpenValidLog()
         {
-            Process.Start(VALID_LOG_FILE_PATH);
+            Process.Start(VALID_LOG_FILE_NAME);
         }
 
         public void OpenRawLog()
         {
-            Process.Start(RAW_LOG_FILE_PATH);
+            Process.Start(RAW_LOG_FILE_NAME);
         }               
 
+        public String getLogDirPath(){
+            return logDirPath;
+        }
+
+        public void setLogDirPath(String p)
+        {
+            logDirPath = p;
+        }
     }
 }
 

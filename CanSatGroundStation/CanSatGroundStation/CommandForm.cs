@@ -12,13 +12,13 @@ using System.Threading;
 
 namespace CanSatGroundStation
 {
-    public partial class TelemetryForm : Form
+    public partial class CommandForm : Form
     {
        
         static string[] comPorts;
         
 
-        public TelemetryForm()
+        public CommandForm()
         {
             InitializeComponent();
             refreshComPorts();

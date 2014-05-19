@@ -37,6 +37,8 @@
             this.btnTelemetry = new System.Windows.Forms.Button();
             this.btnGraphs = new System.Windows.Forms.Button();
             this.btnTable = new System.Windows.Forms.Button();
+            this.btnConfig = new System.Windows.Forms.Button();
+            this.btnStatus = new System.Windows.Forms.Button();
             this.stsStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,12 +110,34 @@
             this.btnTable.UseVisualStyleBackColor = true;
             this.btnTable.Click += new System.EventHandler(this.btnTable_Click);
             // 
+            // btnConfig
+            // 
+            this.btnConfig.Location = new System.Drawing.Point(325, 1);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(75, 24);
+            this.btnConfig.TabIndex = 10;
+            this.btnConfig.Text = "Configure";
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
+            // btnStatus
+            // 
+            this.btnStatus.Location = new System.Drawing.Point(244, 1);
+            this.btnStatus.Name = "btnStatus";
+            this.btnStatus.Size = new System.Drawing.Size(75, 23);
+            this.btnStatus.TabIndex = 12;
+            this.btnStatus.Text = "Status";
+            this.btnStatus.UseVisualStyleBackColor = true;
+            this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click_1);
+            // 
             // StationControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 665);
+            this.Controls.Add(this.btnStatus);
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.btnTable);
             this.Controls.Add(this.btnGraphs);
             this.Controls.Add(this.btnTelemetry);
@@ -142,6 +166,8 @@
         private System.Windows.Forms.Button btnTelemetry;
         private System.Windows.Forms.Button btnGraphs;
         private System.Windows.Forms.Button btnTable;
+        private System.Windows.Forms.Button btnConfig;
+        private System.Windows.Forms.Button btnStatus;
 
     }
 }

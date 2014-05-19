@@ -9,19 +9,19 @@ using System.Windows.Forms;
 
 namespace CanSatGroundStation
 {
-    public partial class DataGraphForm : Form
+    public partial class PayloadGraphForm : Form
     {
-        public DataGraphForm()
+        public PayloadGraphForm()
         {
             InitializeComponent();
         }
 
         public void addPacket(TelemetryPacket packet)
         {
-            rtgTemp.AddDataPoint(packet.temperature);
-            rtgAlt.AddDataPoint(packet.altitude);
-            rtgBat.AddDataPoint(packet.batVoltage);
-            rtgLux.AddDataPoint(packet.lux);
+            rtgTemp.AddDataPoint(packet.temperature);            
+            rtgAlt.AddDataPoint(packet.altitude);           
+            rtgBat.AddDataPoint(packet.batVoltage);            
+            rtgLux.AddDataPoint(packet.lux);           
 
             this.Invoke((MethodInvoker)delegate
             {
@@ -29,10 +29,12 @@ namespace CanSatGroundStation
                 rtgAlt.Refresh();
                 rtgBat.Refresh();
                 rtgLux.Refresh();
-            });
 
-            /*rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));
-            rtgBatteryV.AddDataPoint(Convert.ToInt32(message[5]));*/
+                lblTmp.Text = packet.temperature.ToString("F1");
+                lblAlt.Text = packet.temperature.ToString("F1");
+                lblVolt.Text = packet.temperature.ToString("F1");
+                lblLux.Text = packet.lux.ToString();
+            });            
         }
 
         private void DataGraphForm_FormClosing(object sender, FormClosingEventArgs e)

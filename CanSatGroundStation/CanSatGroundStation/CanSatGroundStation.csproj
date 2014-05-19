@@ -82,14 +82,18 @@
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Container.cs" />
-    <Compile Include="ContainerPacket.cs" />
-    <Compile Include="PayloadPacket.cs" />
-    <Compile Include="SerialParser.cs" />
-    <Compile Include="DataGraphForm.cs">
+    <Compile Include="ContainerGraphForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataGraphForm.Designer.cs">
-      <DependentUpon>DataGraphForm.cs</DependentUpon>
+    <Compile Include="ContainerGraphForm.Designer.cs">
+      <DependentUpon>ContainerGraphForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerialParser.cs" />
+    <Compile Include="PayloadGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayloadGraphForm.Designer.cs">
+      <DependentUpon>PayloadGraphForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataTableForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +108,12 @@
     <Compile Include="StationControl.Designer.cs">
       <DependentUpon>StationControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatusForm.Designer.cs">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelemetryPacket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,17 +123,20 @@
     <Compile Include="RealTimeGraph.Designer.cs">
       <DependentUpon>RealTimeGraph.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelemetryForm.cs">
+    <Compile Include="CommandForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelemetryForm.Designer.cs">
-      <DependentUpon>TelemetryForm.cs</DependentUpon>
+    <Compile Include="CommandForm.Designer.cs">
+      <DependentUpon>CommandForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataGraphForm.resx">
-      <DependentUpon>DataGraphForm.cs</DependentUpon>
+    <EmbeddedResource Include="ContainerGraphForm.resx">
+      <DependentUpon>ContainerGraphForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayloadGraphForm.resx">
+      <DependentUpon>PayloadGraphForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataTableForm.resx">
       <DependentUpon>DataTableForm.cs</DependentUpon>
@@ -143,8 +156,11 @@
     <EmbeddedResource Include="RealTimeGraph.resx">
       <DependentUpon>RealTimeGraph.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelemetryForm.resx">
-      <DependentUpon>TelemetryForm.cs</DependentUpon>
+    <EmbeddedResource Include="StatusForm.resx">
+      <DependentUpon>StatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandForm.resx">
+      <DependentUpon>CommandForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CanSatGroundStation_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">

@@ -1,6 +1,6 @@
 ﻿namespace CanSatGroundStation
 {
-    partial class TelemetryForm
+    partial class CommandForm
     {
         /// <summary>
         /// Required designer variable.

@@ -14,7 +14,7 @@ namespace CanSatGroundStation
         DataTable table = new DataTable();
         
 
-        //<TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,[<LUX>]
+        //<TEAM ID>,<PACKET COUNT>,<MISSION_TIME>,<ALT SENSOR>,<TEMP>,<VOLTAGE>,<LUX>
         public DataTableForm()
         {
             InitializeComponent();         
@@ -25,7 +25,7 @@ namespace CanSatGroundStation
             table.Columns.Add("ALT SENSOR");
             table.Columns.Add("TEMPURATURE");
             table.Columns.Add("SOURCE VOLTAGE");
-            table.Columns.Add("LUX");
+            table.Columns.Add("LUX");           
         }
 
         private void DataTableForm_Load(object sender, EventArgs e)
@@ -37,11 +37,17 @@ namespace CanSatGroundStation
         
         public void AddData(object[] tableData)
         {
+            if (table.Columns.Count != tableData.Length)
+            {
+                return;
+            }
+
             table.Rows.Add(tableData);
             // Invoke an anonymous method on the thread of the form.
             this.Invoke((MethodInvoker) delegate
             {
                 dgvData.Refresh();
+                //dgvData.FirstDisplayedScrollingRowIndex = (dgvData.RowCount > 1) ? dgvData.RowCount - 1 : 0;
             });
         }
 
