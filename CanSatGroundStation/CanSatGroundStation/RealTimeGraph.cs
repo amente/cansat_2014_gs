@@ -16,13 +16,16 @@ namespace CanSatGroundStation
         public double MaxXRecords = 10;
         private double YMin = 0;
         private double YMax = 100;
-        public int numberOfXLabels = 4;
-        public int numberOfYLabels = 5;
+        private int numberOfXLabels = 4;
+        private int numberOfYLabels = 5;
 
         public double YMinimum { get { return YMin; } set { YMin = value; } }
 
         public double YMaximum { get { return YMax; } set { YMax = value; } }
 
+        public int numYLables { get { return numberOfYLabels; } set { numberOfYLabels = value; } }
+
+        public int numXLables { get { return numberOfXLabels; } set { numberOfXLabels = value; } }
 
         public bool ShowGrid = true;
 
@@ -160,7 +163,7 @@ namespace CanSatGroundStation
 
             for (int i = 0; i < numberOfYLabels; i++)
             {
-                string s = String.Format(getFormatString(), (YMin + i * (YMax - YMin) / (numberOfYLabels - 1)));
+                string s = String.Format(getFormatString(), (YMin + i * (YMax - YMin) / (numberOfYLabels-1)));
                 if (labelY)
                 {
                     g.DrawString(s, base.Font, borderPen.Brush,

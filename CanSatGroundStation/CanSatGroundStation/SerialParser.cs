@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO.Ports;
-
+using System.Diagnostics;
 namespace CanSatGroundStation
 {
     // Delegate methods to be notified for events
     public delegate void ValidPacketAvailableHandler(TelemetryPacket packet);
     public delegate void RawPacketAvailableHandler(String data);
+    public delegate void DataRecieveTimoutHandler();
 
     class SerialParser
     {
@@ -18,8 +19,12 @@ namespace CanSatGroundStation
 
         public static event RawPacketAvailableHandler rawPacketAvailable;
         public static event ValidPacketAvailableHandler validPacketAvailable;
+        public static event DataRecieveTimoutHandler dataRecieveTimeout;             
 
         private static StringBuilder bigBuffer;
+
+        private static Stopwatch watchdog;
+        //private static System.Threading.Timer MyTimer = new System.Threading.Timer(dataWatchDog, null, 100, 2000);
 
         private SerialParser(){}
 
@@ -57,7 +62,11 @@ namespace CanSatGroundStation
             {
                 return;
             }
-
+            /*lock (syncRoot)
+            {
+                watchdog.Reset();
+                watchdog.Start();
+            }*/
             byte[] smallBuffer = new byte[serialPort.BytesToRead];
             int recvBytes = serialPort.Read(smallBuffer, 0, smallBuffer.Length);
             String recivedData = BitConverter.ToString(smallBuffer).Replace("-", string.Empty);
@@ -140,6 +149,18 @@ namespace CanSatGroundStation
         public bool serialPortIsOPen()
         {
             return serialPort.IsOpen;
+        }
+
+        public static void dataWatchDog(object state)
+        {
+            lock (syncRoot)
+            {
+                if (watchdog.ElapsedMilliseconds > 10000)
+                {
+                    //No data recieved for more than 10 seconds
+                }
+
+            }
         }
 
     }

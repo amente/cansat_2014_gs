@@ -35,7 +35,7 @@ namespace CanSatGroundStation
         {
             this.Invoke((MethodInvoker)delegate
             {
-                lblPayloadVolt.Text = packet.batVoltage.ToString("F1");
+                lblPayloadVolt.Text = packet.batVoltage.ToString();
                 lblPaloadAlt.Text = packet.altitude.ToString("F1");
                 lblPayloadTmp.Text = packet.temperature.ToString("F1");
                 lblPayloadTime.Text = packet.missionTime.ToString();

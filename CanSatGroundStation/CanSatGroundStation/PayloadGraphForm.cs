@@ -31,8 +31,8 @@ namespace CanSatGroundStation
                 rtgLux.Refresh();
 
                 lblTmp.Text = packet.temperature.ToString("F1");
-                lblAlt.Text = packet.temperature.ToString("F1");
-                lblVolt.Text = packet.temperature.ToString("F1");
+                lblAlt.Text = packet.altitude.ToString("F1");
+                lblVolt.Text = packet.batVoltage.ToString();
                 lblLux.Text = packet.lux.ToString();
             });            
         }
@@ -69,6 +69,11 @@ namespace CanSatGroundStation
         private void label5_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void PayloadGraphForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

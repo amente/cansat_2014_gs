@@ -26,6 +26,8 @@ namespace CanSatGroundStation
             InitializeComponent();
             SerialParser.rawPacketAvailable += RawPacketAvailable;
             SerialParser.validPacketAvailable += ValidPacketAvailable;
+           // SerialParser.dataRecieveTimeout += dataRecieveTimeout;
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -34,17 +36,17 @@ namespace CanSatGroundStation
             payloadGraphForm.Text = "Payload Chart";           
             payloadTableForm = new DataTableForm();
            
-            payloadGraphForm.MdiParent = this;            
-            payloadTableForm.MdiParent = this;
+            //payloadGraphForm.MdiParent = this;            
+            //payloadTableForm.MdiParent = this;
 
             containerGraphForm = new ContainerGraphForm();
             containerGraphForm.Text = "Container Chart";
             containerTableForm = new DataTableForm();
-            containerGraphForm.MdiParent = this;
-            containerTableForm.MdiParent = this;
+            //containerGraphForm.MdiParent = this;
+            //containerTableForm.MdiParent = this;
 
             telemetryForm = new CommandForm();
-            telemetryForm.MdiParent = this;
+            //telemetryForm.MdiParent = this;
             telemetryForm.Show();
 
             configForm = new ConfigForm();
@@ -121,6 +123,18 @@ namespace CanSatGroundStation
         {
             statusForm.Show();
         }
-    
+
+        /*public void dataRecieveTimeout()
+        {
+           
+                payloadTableForm.AddData(packet.toArray());
+                payloadGraphForm.addPacket(packet);
+                statusForm.setPayloadData(packet);
+           
+                containerTableForm.AddData(packet.toArray());
+                containerGraphForm.addPacket(packet);
+                statusForm.setContainerData(packet);            
+        }*/
+
     }
 }

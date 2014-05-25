@@ -38,26 +38,26 @@
             this.lblContainerTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblContainerTmp = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblPayloadTmp = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblPayloadLux = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblPayloadVolt = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblPayloadTime = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblContainerTmp = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblPayloadTime = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblPayloadVolt = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblPayloadLux = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblPayloadTmp = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +176,57 @@
             this.panel1.Size = new System.Drawing.Size(213, 218);
             this.panel1.TabIndex = 11;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(184, 95);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 20);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "m";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(182, 180);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 20);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "°c";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(68, 180);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 20);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "sec";
+            // 
+            // lblContainerTmp
+            // 
+            this.lblContainerTmp.AutoSize = true;
+            this.lblContainerTmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContainerTmp.Location = new System.Drawing.Point(138, 180);
+            this.lblContainerTmp.Name = "lblContainerTmp";
+            this.lblContainerTmp.Size = new System.Drawing.Size(40, 20);
+            this.lblContainerTmp.TabIndex = 12;
+            this.lblContainerTmp.Text = "00.0";
+            this.lblContainerTmp.Click += new System.EventHandler(this.lblContainerTmp_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(138, 148);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 20);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "TEMP";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.MenuText;
@@ -202,177 +253,15 @@
             this.panel2.Size = new System.Drawing.Size(213, 254);
             this.panel2.TabIndex = 12;
             // 
-            // label8
+            // label19
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(5, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 26);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Payload";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(138, 148);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 20);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "TEMP";
-            // 
-            // lblContainerTmp
-            // 
-            this.lblContainerTmp.AutoSize = true;
-            this.lblContainerTmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContainerTmp.Location = new System.Drawing.Point(138, 180);
-            this.lblContainerTmp.Name = "lblContainerTmp";
-            this.lblContainerTmp.Size = new System.Drawing.Size(40, 20);
-            this.lblContainerTmp.TabIndex = 12;
-            this.lblContainerTmp.Text = "00.0";
-            this.lblContainerTmp.Click += new System.EventHandler(this.lblContainerTmp_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(138, 130);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 20);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "TEMP";
-            // 
-            // lblPayloadTmp
-            // 
-            this.lblPayloadTmp.AutoSize = true;
-            this.lblPayloadTmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayloadTmp.Location = new System.Drawing.Point(138, 163);
-            this.lblPayloadTmp.Name = "lblPayloadTmp";
-            this.lblPayloadTmp.Size = new System.Drawing.Size(40, 20);
-            this.lblPayloadTmp.TabIndex = 13;
-            this.lblPayloadTmp.Text = "00.0";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 201);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "LUM";
-            // 
-            // lblPayloadLux
-            // 
-            this.lblPayloadLux.AutoSize = true;
-            this.lblPayloadLux.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayloadLux.Location = new System.Drawing.Point(9, 230);
-            this.lblPayloadLux.Name = "lblPayloadLux";
-            this.lblPayloadLux.Size = new System.Drawing.Size(40, 20);
-            this.lblPayloadLux.TabIndex = 15;
-            this.lblPayloadLux.Text = "0.00";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 49);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 20);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "VOLT";
-            // 
-            // lblPayloadVolt
-            // 
-            this.lblPayloadVolt.AutoSize = true;
-            this.lblPayloadVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayloadVolt.Location = new System.Drawing.Point(14, 80);
-            this.lblPayloadVolt.Name = "lblPayloadVolt";
-            this.lblPayloadVolt.Size = new System.Drawing.Size(31, 20);
-            this.lblPayloadVolt.TabIndex = 17;
-            this.lblPayloadVolt.Text = "0.0";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(9, 130);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 20);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "TIME";
-            // 
-            // lblPayloadTime
-            // 
-            this.lblPayloadTime.AutoSize = true;
-            this.lblPayloadTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayloadTime.Location = new System.Drawing.Point(9, 163);
-            this.lblPayloadTime.Name = "lblPayloadTime";
-            this.lblPayloadTime.Size = new System.Drawing.Size(45, 20);
-            this.lblPayloadTime.TabIndex = 19;
-            this.lblPayloadTime.Text = "0000";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(68, 180);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 20);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "sec";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(182, 180);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(22, 20);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "°c";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(184, 95);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(22, 20);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "m";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(51, 80);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(16, 20);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "v";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(184, 80);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(22, 20);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "m";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(56, 163);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(34, 20);
-            this.label17.TabIndex = 22;
-            this.label17.Text = "sec";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(56, 230);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(70, 20);
+            this.label19.TabIndex = 24;
+            this.label19.Text = "mW/m^2";
             // 
             // label18
             // 
@@ -384,15 +273,126 @@
             this.label18.TabIndex = 23;
             this.label18.Text = "°c";
             // 
-            // label19
+            // label17
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(56, 230);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(66, 20);
-            this.label19.TabIndex = 24;
-            this.label19.Text = "mw/m^2";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(56, 163);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(34, 20);
+            this.label17.TabIndex = 22;
+            this.label17.Text = "sec";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(184, 80);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 20);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "m";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(65, 80);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(33, 20);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "mV";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // lblPayloadTime
+            // 
+            this.lblPayloadTime.AutoSize = true;
+            this.lblPayloadTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayloadTime.Location = new System.Drawing.Point(9, 163);
+            this.lblPayloadTime.Name = "lblPayloadTime";
+            this.lblPayloadTime.Size = new System.Drawing.Size(45, 20);
+            this.lblPayloadTime.TabIndex = 19;
+            this.lblPayloadTime.Text = "0000";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(9, 130);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(47, 20);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "TIME";
+            // 
+            // lblPayloadVolt
+            // 
+            this.lblPayloadVolt.AutoSize = true;
+            this.lblPayloadVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayloadVolt.Location = new System.Drawing.Point(14, 80);
+            this.lblPayloadVolt.Name = "lblPayloadVolt";
+            this.lblPayloadVolt.Size = new System.Drawing.Size(45, 20);
+            this.lblPayloadVolt.TabIndex = 17;
+            this.lblPayloadVolt.Text = "0000";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(123, 20);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "SOURCE VOLT";
+            // 
+            // lblPayloadLux
+            // 
+            this.lblPayloadLux.AutoSize = true;
+            this.lblPayloadLux.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayloadLux.Location = new System.Drawing.Point(9, 230);
+            this.lblPayloadLux.Name = "lblPayloadLux";
+            this.lblPayloadLux.Size = new System.Drawing.Size(45, 20);
+            this.lblPayloadLux.TabIndex = 15;
+            this.lblPayloadLux.Text = "0000";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 201);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "LUX";
+            // 
+            // lblPayloadTmp
+            // 
+            this.lblPayloadTmp.AutoSize = true;
+            this.lblPayloadTmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPayloadTmp.Location = new System.Drawing.Point(138, 163);
+            this.lblPayloadTmp.Name = "lblPayloadTmp";
+            this.lblPayloadTmp.Size = new System.Drawing.Size(40, 20);
+            this.lblPayloadTmp.TabIndex = 13;
+            this.lblPayloadTmp.Text = "00.0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(138, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 20);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "TEMP";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(5, 10);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 26);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Payload";
             // 
             // StatusForm
             // 

@@ -26,7 +26,7 @@ namespace CanSatGroundStation
                 rtgTemp.Refresh();
                 rtgAlt.Refresh();
                 lblTmp.Text = packet.temperature.ToString("F1");
-                lblAlt.Text = packet.temperature.ToString("F1");               
+                lblAlt.Text = packet.altitude.ToString("F1");               
             });
 
             /*rtgAltitude.AddDataPoint(Convert.ToInt32(message[3]));

@@ -34,9 +34,8 @@ namespace CanSatGroundStation
         public double altitude;
         public int missionTime; // Mission time in seconds.
         public int packetCount;
-        public double batVoltage;
-        public double lux;
-        public double ir_lux;
+        public int batVoltage;
+        public int lux;       
         public bool payloadDeployed = false;
 
         String[] packetArray;
@@ -48,7 +47,7 @@ namespace CanSatGroundStation
             isPayload = checkIfFromPayload(telemetry); // This should be done first before conversions
 
             temperature = getShortInt(telemetry.Substring(TEMPERATURE_IDX, 4)) * 0.1; // unvonverted temp is in 0.1 celsious
-            altitude = getLongInt(telemetry.Substring(ALT_IDX, 4))*0.1; // Altitude expected is in 100m's
+            altitude = getShortInt(telemetry.Substring(ALT_IDX, 4))*0.1; // Altitude expected is in 100m's
             missionTime = getShortInt(telemetry.Substring(MISSION_TIME_IDx, 4));
             packetCount = getShortInt(telemetry.Substring(PACKET_COUNT_IDX, 4));
             batVoltage = getShortInt(telemetry.Substring(SOURCE_VOLT_IDX,4));
