@@ -21,7 +21,8 @@ namespace CanSatGroundStation
         public static event ValidPacketAvailableHandler validPacketAvailable;
         public static event DataRecieveTimoutHandler dataRecieveTimeout;             
 
-        private static StringBuilder bigBuffer;
+        private static StringBuilder validBuffer;
+        private static StringBuilder rawBuffer;
 
         private static Stopwatch watchdog;
         //private static System.Threading.Timer MyTimer = new System.Threading.Timer(dataWatchDog, null, 100, 2000);
@@ -39,7 +40,8 @@ namespace CanSatGroundStation
                     {
                         serialParser = new SerialParser();                        
                         serialPort = new SerialPort();
-                        bigBuffer = new StringBuilder();
+                        validBuffer = new StringBuilder();
+                        rawBuffer = new StringBuilder();
                         serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                     }
                 }
@@ -73,27 +75,33 @@ namespace CanSatGroundStation
 
             Console.WriteLine(recivedData);
 
-            bigBuffer.Append(recivedData);
+            validBuffer.Append(recivedData);
+            rawBuffer.Append(recivedData);
 
 
-            if (bigBuffer.Length > TelemetryPacket.API_PACKET_SIZE)
+            if (validBuffer.Length > TelemetryPacket.API_PACKET_SIZE)
             {
-                String snapShot = bigBuffer.ToString();
+                String snapShot = validBuffer.ToString();
                 Console.WriteLine(snapShot);
-                Console.WriteLine("Length" + bigBuffer.Length);
+                Console.WriteLine("Length" + validBuffer.Length);
                 int start = snapShot.IndexOf("7E");
                 int end = snapShot.IndexOf("7E", start + 3);
                 Console.WriteLine("Start" + start + " End" + end);
-                if ((end - start) > 0)
+                if ((end - start) >= 0)
                 {
-                    String data = snapShot.Substring(start, (end - start));
-                    OnRawPacketAvaialbe(data);
-                    parse(data);
-                    //bigBuffer.Remove(0, end);
-                    bigBuffer.Clear();
-                    bigBuffer.Append(snapShot.Substring(end));
+                    String data = snapShot.Substring(start, (end - start));                   
+                    parse(data);                 
+                    validBuffer.Clear();
+                    validBuffer.Append(snapShot.Substring(end));
                 }
             }
+
+            if (rawBuffer.Length > TelemetryPacket.API_PACKET_SIZE)
+            {
+                OnRawPacketAvaialbe(rawBuffer.ToString());
+                rawBuffer.Clear();
+            }
+
         }
 
 

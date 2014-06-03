@@ -5,25 +5,40 @@
 
 #define BACKLIGHT_PIN 13
 
-float alt = 0;
-float temp = 0;
-int mission_time = 0;
-int pkt_cnt = 0;
+float p_alt = 0;
+float p_temp = 0;
+int p_mission_time = 0;
+int p_lux = 0;
+int p_pkt_cnt = 0;
+
+float c_alt = 0;
+float c_temp = 0;
+int c_mission_time = 0;
+int c_pkt_cnt = 0;
 
 
-byte alt_buf[2] = {0,0};
-byte tmp_buf[2] = {0,0};
-byte mission_time_buf[2] = {0,0}; // Mission Time Buffer
-byte pkt_cnt_buf[2] = {0,0}; // Packet count buffer
+byte p_alt_buf[2] = {0,0};
+byte p_tmp_buf[2] = {0,0};
+byte p_mission_time_buf[2] = {0,0}; // Mission Time Buffer
+byte p_pkt_cnt_buf[2] = {0,0}; // Packet count buffer
 
-int next_pkt_cnt = 1;
-int pkt_loss = 0;
+//Used for payload decent rate calculation
+float p_alts [3];
+int p_alts_idx = 0;
+float p_mission_times [3];
+int p_mission_time_idx = 0;
 
-//Used for decent rate calculation
-float alts [3];
-int alts_idx = 0;
-float mission_times [3];
-int mission_time_idx = 0;
+byte c_alt_buf[2] = {0,0};
+byte c_tmp_buf[2] = {0,0};
+byte c_mission_time_buf[2] = {0,0}; // Mission Time Buffer
+byte c_pkt_cnt_buf[2] = {0,0}; // Packet count buffer
+
+//Used for container decent rate calculation
+float c_alts [3];
+int c_alts_idx = 0;
+float c_mission_times [3];
+int c_mission_time_idx = 0;
+
 
 int byteCount = 0; // Incoming telemetry bytes after start delimiter 7E 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
@@ -41,33 +56,33 @@ void setup() {
 
 void loop() {
   
-  alt = BitReadCombine(alt_buf[0],alt_buf[1])/100.0;
-  alts[(++alts_idx)%3] = alt;
-  temp = BitReadCombine(tmp_buf[0],tmp_buf[1])/10.0;
-  mission_time = BitReadCombine(mission_time_buf[0],mission_time_buf[1]);
-  mission_times[(++mission_time_idx)%3] = mission_time;
-  pkt_cnt = BitReadCombine(pkt_cnt_buf[0],pkt_cnt_buf[1]);
-  pkt_loss += pkt_cnt-next_pkt_cnt;
-  next_pkt_cnt = pkt_cnt;
-   
+  p_alt = BitReadCombine(p_alt_buf[0],p_alt_buf[1])/100.0;
+  p_alts[(++p_alts_idx)%3] = p_alt;
+  p_temp = BitReadCombine(p_tmp_buf[0],p_tmp_buf[1])/10.0;
+  p_mission_time = BitReadCombine(p_mission_time_buf[0],p_mission_time_buf[1]);
+  p_mission_times[(++p_mission_time_idx)%3] = p_mission_time;
+  p_pkt_cnt = BitReadCombine(p_pkt_cnt_buf[0],p_pkt_cnt_buf[1]);
+     
   
   //Print on LCD   
   lcd.setCursor(0,0);
-  lcd.print("Alt:");
-  lcd.print(alt);  
+  lcd.print("PA:");
+  lcd.print(p_alt);  
+  
+  lcd.setCursor(10,0);
+  lcd.print("PT:");
+  lcd.print(p_temp);
   
   lcd.setCursor(0,1);
-  lcd.print("Temp:");
-  lcd.print(temp);
-    
-  lcd.setCursor(0,2);
-  lcd.print("DR:");
+  lcd.print("PL:");
+  lcd.print(p_lux);  
+  
+  lcd.setCursor(10,1);
+  lcd.print("PD:");
   lcd.print(calculate_decent_rate());
 
-  lcd.setCursor(0,3);
-  lcd.print("PKT Loss:");  
-  lcd.print((pkt_loss*100.0)/pkt_cnt);
-  lcd.print("%");
+
+ 
   delay(500);
 }
 
@@ -79,22 +94,22 @@ void serialEvent() {
     
     // PKT_CNT
     if(byteCount > 2  && byteCount<5){
-      pkt_cnt_buf[byteCount - 3] = inChar;
+      p_pkt_cnt_buf[byteCount - 3] = inChar;
     }
     
     //MISSION_TIME
     if(byteCount > 4  && byteCount<7){
-      mission_time_buf[byteCount - 4] = inChar;
+      p_mission_time_buf[byteCount - 4] = inChar;
     }
     
     //ALT
     if(byteCount > 20  && byteCount<23){
-      alt_buf[byteCount - 21 ] = inChar;
+      p_alt_buf[byteCount - 21 ] = inChar;
     }
     
     //TMP
     if(byteCount > 22 && byteCount<25){
-      tmp_buf[byteCount-23] = inChar;
+      p_tmp_buf[byteCount-23] = inChar;
     }          
     
     //START DELIM
@@ -123,9 +138,9 @@ int BitReadCombine( unsigned int x_high, unsigned int x_low)
 float calculate_decent_rate(){
    float decent_rate_sum = 0;
    for(int i = 0;i<2;i++){
-     int diff = mission_times[i+1]-mission_times[i]
+     int diff = p_mission_times[i+1]-p_mission_times[i];
      if(diff!=0){
-       decent_rate_sum += (alts[i+1] - alts[i])/diff); 
+       decent_rate_sum += ((p_alts[i+1] - p_alts[i])/diff); 
      }
    } 
    return decent_rate_sum/2;

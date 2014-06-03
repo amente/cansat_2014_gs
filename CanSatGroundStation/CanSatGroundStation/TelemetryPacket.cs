@@ -21,8 +21,9 @@ namespace CanSatGroundStation
         public static int TEMPERATURE_IDX = 16;
         public static int SOURCE_VOLT_IDX = 20;
         public static int LUM_IDX = 24;             
-        public static int PACKET_FROM_IDX = 28;
-        public static int PAYLOAD_DEPLOYED_IDX = 30;
+        public static int PACKET_FROM_IDX = 28;       
+        public static int UMBRELLA_DEPLOYED_IDX = 30;
+        public static int PAYLOAD_DEPLOYED_IDX = 31;
                 
 
         private Boolean isPayload = true;
@@ -32,11 +33,12 @@ namespace CanSatGroundStation
 
         public double temperature;
         public double altitude;
-        public int missionTime; // Mission time in seconds.
-        public int packetCount;
+        public UInt16 missionTime; // Mission time in seconds.
+        public UInt16 packetCount;
         public int batVoltage;
         public int lux;       
         public bool payloadDeployed = false;
+        public bool umbrellaDeployed = false;
 
         String[] packetArray;
         String packetString;
@@ -48,18 +50,15 @@ namespace CanSatGroundStation
 
             temperature = getShortInt(telemetry.Substring(TEMPERATURE_IDX, 4)) * 0.1; // unvonverted temp is in 0.1 celsious
             altitude = getShortInt(telemetry.Substring(ALT_IDX, 4))*0.1; // Altitude expected is in 100m's
-            missionTime = getShortInt(telemetry.Substring(MISSION_TIME_IDx, 4));
-            packetCount = getShortInt(telemetry.Substring(PACKET_COUNT_IDX, 4));
+            missionTime = getUShortInt(telemetry.Substring(MISSION_TIME_IDx, 4));
+            packetCount = getUShortInt(telemetry.Substring(PACKET_COUNT_IDX, 4));
             batVoltage = getShortInt(telemetry.Substring(SOURCE_VOLT_IDX,4));
+                   
 
-            //Light sesor data is expected to be raw, hence conversion here
-            //double[] light_sensor_data = light_sensor_conversion(getUnsignedShortInt(telemetry.Substring(LUX_IDX,4)),getUnsignedShortInt(telemetry.Substring(LUX_IDX_IR, 4)));
-            //lux = light_sensor_data[0];
-            //ir_lux = light_sensor_data[1];
-
-            lux = getUnsignedShortInt(telemetry.Substring(LUM_IDX,4));
+            lux = getUnsignedShortInt(telemetry.Substring(LUM_IDX,4))*16;
             
-            payloadDeployed = telemetry.Substring(PAYLOAD_DEPLOYED_IDX, 2) == "FF";
+            payloadDeployed = telemetry.Substring(PAYLOAD_DEPLOYED_IDX, 1) == "F";
+            umbrellaDeployed = telemetry.Substring(UMBRELLA_DEPLOYED_IDX, 1) == "F";
             
             packetArray = new String[] { 
                 TEAM_ID,
@@ -87,6 +86,11 @@ namespace CanSatGroundStation
 
         private Int16 getShortInt(String hexText){
             return Int16.Parse(hexText, System.Globalization.NumberStyles.HexNumber);
+        }
+
+        private UInt16 getUShortInt(String hexText)
+        {
+            return UInt16.Parse(hexText, System.Globalization.NumberStyles.HexNumber);
         }
 
         private Int32 getLongInt(String hexText)

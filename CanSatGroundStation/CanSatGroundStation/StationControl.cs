@@ -35,18 +35,17 @@ namespace CanSatGroundStation
             payloadGraphForm = new PayloadGraphForm();
             payloadGraphForm.Text = "Payload Chart";           
             payloadTableForm = new DataTableForm();
-           
-            //payloadGraphForm.MdiParent = this;            
-            //payloadTableForm.MdiParent = this;
+
+            payloadGraphForm.Show();
+            payloadTableForm.Show();
 
             containerGraphForm = new ContainerGraphForm();
             containerGraphForm.Text = "Container Chart";
             containerTableForm = new DataTableForm();
-            //containerGraphForm.MdiParent = this;
-            //containerTableForm.MdiParent = this;
+            containerGraphForm.Show();
+            containerTableForm.Show();
 
-            telemetryForm = new CommandForm();
-            //telemetryForm.MdiParent = this;
+            telemetryForm = new CommandForm();         
             telemetryForm.Show();
 
             configForm = new ConfigForm();
@@ -73,7 +72,8 @@ namespace CanSatGroundStation
                 containerGraphForm.addPacket(packet);                
                 statusForm.setContainerData(packet);
             }
-           
+
+            telemetryForm.appendValidData(packet);
             Logger.Instance.logValid(packet);
         }
 

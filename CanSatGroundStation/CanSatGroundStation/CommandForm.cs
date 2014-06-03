@@ -63,6 +63,35 @@ namespace CanSatGroundStation
                 })); 
                                                   
         }
+
+        public void appendValidData(TelemetryPacket packet)
+        {
+
+            this.BeginInvoke(new EventHandler(delegate
+            {
+                if (packet.isFromPayload())
+                {
+                    String s = packet.toString();
+                    rtbValidPacket.SelectionStart = s.Length;
+                    rtbValidPacket.SelectionLength = 0;
+                    rtbValidPacket.SelectionColor = Color.Blue;
+                    rtbValidPacket.AppendText(s);
+                    rtbValidPacket.AppendText("\n");
+                    rtbValidPacket.SelectionColor = rtbValidPacket.ForeColor;
+                }
+                else
+                {
+                    String s = packet.toString();
+                    rtbValidPacket.SelectionStart = s.Length;
+                    rtbValidPacket.SelectionLength = 0;
+                    rtbValidPacket.SelectionColor = Color.DarkGreen;
+                    rtbValidPacket.AppendText(s);
+                    rtbValidPacket.AppendText("\n");
+                    rtbValidPacket.SelectionColor = rtbValidPacket.ForeColor;
+                }
+            }));
+
+        }
        
         private void TelemetryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -133,6 +162,11 @@ namespace CanSatGroundStation
         }
 
         private void TelemetryForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tlpTelemetry_Paint(object sender, PaintEventArgs e)
         {
 
         }

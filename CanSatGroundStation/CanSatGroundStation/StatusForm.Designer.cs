@@ -58,6 +58,8 @@
             this.lblPayloadTmp = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblUmbrellaDeployed = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +89,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(152, 63);
+            this.label3.Location = new System.Drawing.Point(145, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 2;
@@ -97,7 +99,7 @@
             // 
             this.lblContainerAlt.AutoSize = true;
             this.lblContainerAlt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContainerAlt.Location = new System.Drawing.Point(138, 95);
+            this.lblContainerAlt.Location = new System.Drawing.Point(131, 140);
             this.lblContainerAlt.Name = "lblContainerAlt";
             this.lblContainerAlt.Size = new System.Drawing.Size(49, 20);
             this.lblContainerAlt.TabIndex = 3;
@@ -107,7 +109,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(5, 63);
+            this.label5.Location = new System.Drawing.Point(-2, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 20);
             this.label5.TabIndex = 4;
@@ -118,7 +120,7 @@
             this.lblPayloadDeployed.AutoSize = true;
             this.lblPayloadDeployed.BackColor = System.Drawing.Color.Red;
             this.lblPayloadDeployed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayloadDeployed.Location = new System.Drawing.Point(30, 95);
+            this.lblPayloadDeployed.Location = new System.Drawing.Point(23, 140);
             this.lblPayloadDeployed.Name = "lblPayloadDeployed";
             this.lblPayloadDeployed.Size = new System.Drawing.Size(32, 20);
             this.lblPayloadDeployed.TabIndex = 5;
@@ -128,7 +130,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(5, 148);
+            this.label7.Location = new System.Drawing.Point(3, 181);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 20);
             this.label7.TabIndex = 6;
@@ -138,7 +140,7 @@
             // 
             this.lblContainerTime.AutoSize = true;
             this.lblContainerTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContainerTime.Location = new System.Drawing.Point(23, 180);
+            this.lblContainerTime.Location = new System.Drawing.Point(21, 213);
             this.lblContainerTime.Name = "lblContainerTime";
             this.lblContainerTime.Size = new System.Drawing.Size(45, 20);
             this.lblContainerTime.TabIndex = 7;
@@ -158,6 +160,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.MenuText;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.lblUmbrellaDeployed);
+            this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label10);
@@ -173,14 +177,14 @@
             this.panel1.ForeColor = System.Drawing.Color.GreenYellow;
             this.panel1.Location = new System.Drawing.Point(8, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(213, 218);
+            this.panel1.Size = new System.Drawing.Size(213, 251);
             this.panel1.TabIndex = 11;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(184, 95);
+            this.label14.Location = new System.Drawing.Point(177, 140);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(22, 20);
             this.label14.TabIndex = 15;
@@ -190,7 +194,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(182, 180);
+            this.label12.Location = new System.Drawing.Point(180, 213);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(22, 20);
             this.label12.TabIndex = 14;
@@ -200,7 +204,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(68, 180);
+            this.label10.Location = new System.Drawing.Point(78, 213);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 20);
             this.label10.TabIndex = 13;
@@ -210,7 +214,7 @@
             // 
             this.lblContainerTmp.AutoSize = true;
             this.lblContainerTmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContainerTmp.Location = new System.Drawing.Point(138, 180);
+            this.lblContainerTmp.Location = new System.Drawing.Point(136, 213);
             this.lblContainerTmp.Name = "lblContainerTmp";
             this.lblContainerTmp.Size = new System.Drawing.Size(40, 20);
             this.lblContainerTmp.TabIndex = 12;
@@ -221,7 +225,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(138, 148);
+            this.label9.Location = new System.Drawing.Point(136, 181);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 20);
             this.label9.TabIndex = 11;
@@ -248,7 +252,7 @@
             this.panel2.Controls.Add(this.lblPaloadAlt);
             this.panel2.Controls.Add(this.label1);
             this.panel2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.panel2.Location = new System.Drawing.Point(8, 236);
+            this.panel2.Location = new System.Drawing.Point(5, 269);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(213, 254);
             this.panel2.TabIndex = 12;
@@ -394,11 +398,32 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Payload";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(-2, 59);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(124, 20);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "DC DEPLOYED";
+            // 
+            // lblUmbrellaDeployed
+            // 
+            this.lblUmbrellaDeployed.AutoSize = true;
+            this.lblUmbrellaDeployed.BackColor = System.Drawing.Color.Red;
+            this.lblUmbrellaDeployed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUmbrellaDeployed.Location = new System.Drawing.Point(152, 59);
+            this.lblUmbrellaDeployed.Name = "lblUmbrellaDeployed";
+            this.lblUmbrellaDeployed.Size = new System.Drawing.Size(32, 20);
+            this.lblUmbrellaDeployed.TabIndex = 17;
+            this.lblUmbrellaDeployed.Text = "NO";
+            // 
             // StatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 502);
+            this.ClientSize = new System.Drawing.Size(230, 535);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "StatusForm";
@@ -444,5 +469,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblUmbrellaDeployed;
+        private System.Windows.Forms.Label label20;
     }
 }

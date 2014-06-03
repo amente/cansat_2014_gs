@@ -29,6 +29,21 @@ namespace CanSatGroundStation
                 lblPayloadDeployed.BackColor = Color.Red;
             }
         }
+
+        public void setUmbrellaDeployed(bool umbrellaDeployed)
+        {
+            if (umbrellaDeployed)
+            {
+                lblUmbrellaDeployed.Text = "YES";
+                lblUmbrellaDeployed.BackColor = Color.Green;
+            }
+            else
+            {
+                lblUmbrellaDeployed.Text = "NO";
+                lblUmbrellaDeployed.BackColor = Color.Red;
+            }
+        }
+          
           
 
         public void setPayloadData(TelemetryPacket packet)
@@ -54,16 +69,8 @@ namespace CanSatGroundStation
                 lblContainerTmp.Text = packet.temperature.ToString("F1");
                 lblContainerTime.Text = packet.missionTime.ToString();
 
-                if (packet.payloadDeployed)
-                {
-                    lblPayloadDeployed.Text = "YES";
-                    lblPayloadDeployed.BackColor = Color.Green;
-                }
-                else
-                {
-                    lblPayloadDeployed.Text = "NO";
-                    lblPayloadDeployed.BackColor = Color.Red;
-                }
+                setPayloadDeployed(packet.payloadDeployed);
+                setUmbrellaDeployed(packet.umbrellaDeployed);
 
             });            
         }
