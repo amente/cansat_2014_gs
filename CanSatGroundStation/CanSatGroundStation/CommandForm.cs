@@ -71,23 +71,18 @@ namespace CanSatGroundStation
             {
                 if (packet.isFromPayload())
                 {
-                    String s = packet.toString();
-                    rtbValidPacket.SelectionStart = s.Length;
-                    rtbValidPacket.SelectionLength = 0;
+                    
+                    String s = packet.toString();     
                     rtbValidPacket.SelectionColor = Color.Blue;
                     rtbValidPacket.AppendText(s);
-                    rtbValidPacket.AppendText("\n");
-                    rtbValidPacket.SelectionColor = rtbValidPacket.ForeColor;
+                    rtbValidPacket.AppendText("\n");                    
                 }
                 else
                 {
                     String s = packet.toString();
-                    rtbValidPacket.SelectionStart = s.Length;
-                    rtbValidPacket.SelectionLength = 0;
-                    rtbValidPacket.SelectionColor = Color.DarkGreen;
+                    rtbValidPacket.SelectionColor = Color.Orange;
                     rtbValidPacket.AppendText(s);
-                    rtbValidPacket.AppendText("\n");
-                    rtbValidPacket.SelectionColor = rtbValidPacket.ForeColor;
+                    rtbValidPacket.AppendText("\n");                   
                 }
             }));
 
