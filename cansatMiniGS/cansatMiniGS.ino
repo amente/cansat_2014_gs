@@ -5,33 +5,33 @@
 
 #define BACKLIGHT_PIN 13
 
-float p_alt = 0;
-float p_temp = 0;
-int p_mission_time = 0;
-int p_lux = 0;
-int p_pkt_cnt = 0;
+typedef struct{  
+  float alt;
+  float temp;
+  uint16_t mission_time;
+  uint16_t lux;
+  uint16_t pkt_cnt;
+  int src_vlt;
+  boolean umbrella_deployed;
+  boolean payload_released;
+}telemetry_packet_t;
 
-float c_alt = 0;
-float c_temp = 0;
-int c_mission_time = 0;
-int c_pkt_cnt = 0;
+static telemetry_packet_t p;
+static telemetry_packet_t c;
 
-
-byte p_alt_buf[2] = {0,0};
-byte p_tmp_buf[2] = {0,0};
-byte p_mission_time_buf[2] = {0,0}; // Mission Time Buffer
-byte p_pkt_cnt_buf[2] = {0,0}; // Packet count buffer
+byte alt_buf[2] = {0,0};
+byte tmp_buf[2] = {0,0};
+byte mission_time_buf[2] = {0,0}; // Mission Time Buffer
+byte pkt_cnt_buf[2] = {0,0}; // Packet count buffer
+byte vlt_buf[2] = {0,0};
+byte lux_buf[2] = {0,0};
+byte status_buf[2] = {0,0};
 
 //Used for payload decent rate calculation
 float p_alts [3];
 int p_alts_idx = 0;
 float p_mission_times [3];
 int p_mission_time_idx = 0;
-
-byte c_alt_buf[2] = {0,0};
-byte c_tmp_buf[2] = {0,0};
-byte c_mission_time_buf[2] = {0,0}; // Mission Time Buffer
-byte c_pkt_cnt_buf[2] = {0,0}; // Packet count buffer
 
 //Used for container decent rate calculation
 float c_alts [3];
@@ -56,30 +56,40 @@ void setup() {
 
 void loop() {
   
-  p_alt = BitReadCombine(p_alt_buf[0],p_alt_buf[1])/100.0;
-  p_alts[(++p_alts_idx)%3] = p_alt;
-  p_temp = BitReadCombine(p_tmp_buf[0],p_tmp_buf[1])/10.0;
-  p_mission_time = BitReadCombine(p_mission_time_buf[0],p_mission_time_buf[1]);
-  p_mission_times[(++p_mission_time_idx)%3] = p_mission_time;
-  p_pkt_cnt = BitReadCombine(p_pkt_cnt_buf[0],p_pkt_cnt_buf[1]);
-     
-  
   //Print on LCD   
   lcd.setCursor(0,0);
   lcd.print("PA:");
-  lcd.print(p_alt);  
+  lcd.print(p.alt);  
   
   lcd.setCursor(10,0);
   lcd.print("PT:");
-  lcd.print(p_temp);
+  lcd.print(p.temp);
   
   lcd.setCursor(0,1);
   lcd.print("PL:");
-  lcd.print(p_lux);  
+  lcd.print(p.lux);  
   
   lcd.setCursor(10,1);
   lcd.print("PD:");
-  lcd.print(calculate_decent_rate());
+  lcd.print(calculate_decent_rate(true));
+  
+  //Print on LCD   
+  lcd.setCursor(0,2);
+  lcd.print("CA:");
+  lcd.print(c.alt);  
+  
+  lcd.setCursor(10,2);
+  lcd.print("CT:");
+  lcd.print(c.temp);
+  
+  lcd.setCursor(0,3);
+  lcd.print("CS:");
+  lcd.print(c.umbrella_deployed?"Y","N"); 
+  lcd.print(c.payload_released?"Y","N");
+  
+  lcd.setCursor(10,3);
+  lcd.print("CD:");
+  lcd.print(calculate_decent_rate(false));
 
 
  
@@ -94,31 +104,79 @@ void serialEvent() {
     
     // PKT_CNT
     if(byteCount > 2  && byteCount<5){
-      p_pkt_cnt_buf[byteCount - 3] = inChar;
+      pkt_cnt_buf[byteCount - 3] = inChar;
     }
     
     //MISSION_TIME
     if(byteCount > 4  && byteCount<7){
-      p_mission_time_buf[byteCount - 4] = inChar;
+      mission_time_buf[byteCount - 4] = inChar;
     }
     
     //ALT
     if(byteCount > 20  && byteCount<23){
-      p_alt_buf[byteCount - 21 ] = inChar;
+      alt_buf[byteCount - 21 ] = inChar;
     }
     
     //TMP
     if(byteCount > 22 && byteCount<25){
-      p_tmp_buf[byteCount-23] = inChar;
-    }          
+      tmp_buf[byteCount-23] = inChar;
+    }    
+
+    //SOURCE VOLT
+    if(byteCount > 24 && byteCount<27){
+      vlt_buf[byteCount-25] = inChar;
+    }    
+    
+    //LUX
+    if(byteCount > 26 && byteCount<29){
+      lux_buf[byteCount-27] = inChar;
+    }  
+    
+    //STATUS
+    if(byteCount > 28 && byteCount<31){
+      status_buf[byteCount-29] = inChar;
+    }      
     
     //START DELIM
     if(inChar == 0x7E){       
-       byteCount = 0;               
+       byteCount = 0;         
+       if(status_buf[0]==0xFF){
+       //Container
+        c.alt = BitReadCombine(alt_buf[0],alt_buf[1])/10.0;
+        c_alts[(++c_alts_idx)%3] = c.alt;
+        c.temp = BitReadCombine(tmp_buf[0],tmp_buf[1])/10.0;
+        c.mission_time = BitReadCombine(mission_time_buf[0],mission_time_buf[1]);
+        c_mission_times[(++c_mission_time_idx)%3] = c.mission_time;
+        c.pkt_cnt = BitReadCombine(pkt_cnt_buf[0],pkt_cnt_buf[1]);    
+        c.umbrella_deployed = status_buf[1] & 0xF0;
+        c.payload_released = status_buf[1]&0x0F;
+      }else{
+        //Payload
+        p.alt = BitReadCombine(alt_buf[0],alt_buf[1])/100.0;
+        p_alts[(++c_alts_idx)%3] = p.alt;
+        p.temp = BitReadCombine(tmp_buf[0],tmp_buf[1])/10.0;
+        p.mission_time = UBitReadCombine(mission_time_buf[0],mission_time_buf[1]);
+        p_mission_times[(++p_mission_time_idx)%3] = p.mission_time;
+        p.pkt_cnt = UBitReadCombine(pkt_cnt_buf[0],pkt_cnt_buf[1]);   
+        p.lux = UBitReadCombine(lux_buf[0],lux_buf[1])*16;  
+        p.src_vlt = BitReadCombine(vlt_buf[0],vlt_buf[1]);         
+      }  
     }
-   
   }
- 
+}
+
+uint16_t UBitReadCombine( unsigned int x_high, unsigned int x_low)
+{
+  uint16_t x;
+  for( int t = 7; t >= 0; t--)
+  {
+    bitWrite(x, t,  bitRead(x_low, t));
+  }
+  for( int t = 7; t >= 0; t--)
+  {
+    bitWrite(x, t + 8,  bitRead(x_high, t));
+  }
+  return x;
 }
 
 int BitReadCombine( unsigned int x_high, unsigned int x_low)
@@ -135,14 +193,22 @@ int BitReadCombine( unsigned int x_high, unsigned int x_low)
   return x;
 }
 
-float calculate_decent_rate(){
+float calculate_decent_rate(boolean payload){
    float decent_rate_sum = 0;
+   int diff;
    for(int i = 0;i<2;i++){
-     int diff = p_mission_times[i+1]-p_mission_times[i];
-     if(diff!=0){
-       decent_rate_sum += ((p_alts[i+1] - p_alts[i])/diff); 
-     }
-   } 
+     if(payload){
+         diff = p_mission_times[i+1]-p_mission_times[i];
+         if(diff!=0){
+           decent_rate_sum += ((p_alts[i+1] - p_alts[i])/diff); 
+         }
+     }else{
+        diff = c_mission_times[i+1]-c_mission_times[i];
+        if(diff!=0){
+          decent_rate_sum += ((c_alts[i+1] - c_alts[i])/diff);
+        }
+     } 
    return decent_rate_sum/2;
+ }
 }
 
