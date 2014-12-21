@@ -1,8 +1,8 @@
 Carleton CanSat 2014
 ====================
 
-Ground Station Software Architecture
-------------------------------------
+Ground Station Software
+-----------------------
 
 <img src="http://amente.github.io/images/Projects/CanSat/gcs.png" alt="Software Architecture Diagram" />
 
